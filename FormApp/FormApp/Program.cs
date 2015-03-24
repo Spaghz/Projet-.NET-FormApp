@@ -19,7 +19,7 @@ namespace FormApp
 
             Console.WriteLine(T1.ToString());
             Console.ReadLine();
-            Console.WriteLine("Toto");
+            Console.WriteLine("T'es trop chouchou");
 
         }
     }
