@@ -12,7 +12,7 @@ namespace FormApp.Core.Forms
     {
         private Point _p1, _p2;
 
-        public Segment(Point p1,Point p2) : base()
+        public Segment(string nom, Point p1,Point p2) : base(nom)
         {
             //checkParameters(p1, p2);
 
@@ -84,10 +84,9 @@ namespace FormApp.Core.Forms
 
         protected override string ToJsonSpecificMore()
         {
-            return "";
-            //return "{\"P1\":{\"X\":" + P1.X + ",\"Y\":" + P1.Y + "},\"P2\":{\"X\":" + P2.X + ",\"Y\":" + P2.X + "},\"P3\":{\"X\":" + P3.X + ",\"Y\":" + P3.X + "}}";
-        }
-
-      
+            return "\"P1\":{\"X\":" + P1.X.ToString().Replace(',', '.') + ",\"Y\":" + P1.Y.ToString().Replace(',', '.')
+                 + "},\"P2\":{\"X\":" + P2.X.ToString().Replace(',', '.') + ",\"Y\":" + P2.Y.ToString().Replace(',', '.')
+                 + "}";
+       }
     }
 }

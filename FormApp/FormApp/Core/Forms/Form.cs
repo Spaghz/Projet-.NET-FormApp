@@ -21,11 +21,14 @@ namespace FormApp.Core.Forms
         private Form    _parent=null;
 
         private int     _edgeSize=1;
+
+        private string _nom;
         /***********************************
          *  Constructor(s)
          ***********************************/
-        protected Form()
+        protected Form(string nom)
         {
+            _nom = nom;
         }
 
         protected Form(Color backgroundColor)
@@ -57,6 +60,11 @@ namespace FormApp.Core.Forms
             get { return _edgeSize; }
         }
 
+        public string Nom
+        {
+            get { return _nom; }
+        }
+
         abstract public double Area
         {
             get;
@@ -73,7 +81,7 @@ namespace FormApp.Core.Forms
 
         public string ToJson()
         {
-            return "{\"form\":{" + ToJsonSpecific() + ",\"globalData\":{\"BackgroundColor\":" + (BackgroundColor == null ? "null" : BackgroundColor.ToString()) + ",\"EdgeColor\":" + (EdgeColor == null ? "null" : EdgeColor.ToString()) + ",\"Parent\":" + (Parent == null ? "null" : Parent.ToString()) + ",\"EdgeSize\":" + (EdgeSize == null ? "null" : EdgeSize.ToString()) + "}}}";
+            return "\"" + this.Nom + "\":" + ToJsonSpecific() + ",\"globalData\":{\"BackgroundColor\":" + (BackgroundColor == null ? "null" : BackgroundColor.ToString()) + ",\"EdgeColor\":" + (EdgeColor == null ? "null" : EdgeColor.ToString()) + ",\"Parent\":" + (Parent == null ? "null" : Parent.ToString()) + ",\"EdgeSize\":" + (EdgeSize == null ? "null" : EdgeSize.ToString()) + "}}";
         }
 
         protected abstract string ToJsonSpecific();

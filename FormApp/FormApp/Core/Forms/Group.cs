@@ -21,7 +21,7 @@ namespace FormApp.Core.Forms
         /***********************************
          *  Constructor(s)
          ***********************************/
-        public Group() : base() 
+        public Group(string nom) : base(nom) 
         {
             _forms = new List<Form>();
             _singleColorGroup = false;
@@ -77,7 +77,7 @@ namespace FormApp.Core.Forms
 
         protected override string ToJsonSpecific()
         {
-            String res = "\"groupData\":";
+            String res = "{\"groupData\":{";
 
             List<string> forms = new List<String>();
 
@@ -86,7 +86,7 @@ namespace FormApp.Core.Forms
                 forms.Add(f.ToJson());
             }
 
-            return res+StringUtils.implode(forms,',')+"";
+            return res + StringUtils.implode(forms, ',') + "}";
         }
 
         /***********************************

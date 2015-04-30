@@ -50,6 +50,7 @@
     <Compile Include="Core\Forms\GroupEnum.cs" />
     <Compile Include="Core\Forms\Polygon.cs" />
     <Compile Include="Core\Forms\PolygonEnum.cs" />
+    <Compile Include="Core\Forms\Rectangle.cs" />
     <Compile Include="Core\Forms\Segment.cs" />
     <Compile Include="Core\Forms\Triangle.cs" />
     <Compile Include="Core\Utils\Color.cs" />

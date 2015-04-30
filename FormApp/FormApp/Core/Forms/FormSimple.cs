@@ -10,7 +10,7 @@ namespace FormApp.Core.Forms
 {
     abstract public class FormSimple : Form
     {
-        protected FormSimple() : base() { }
+        protected FormSimple(string nom) : base(nom) {}
         protected FormSimple(Color color) : base(color) { }
 
         abstract public override double Area
@@ -18,10 +18,9 @@ namespace FormApp.Core.Forms
             get;
         }
 
-
         protected override string ToJsonSpecific()
         {
-            return "\"specificData\":{" + ToJsonSpecificMore()+"}" ;
+            return "{\"specificData\":{" + ToJsonSpecificMore() + "}";
         }
 
         abstract protected string ToJsonSpecificMore();

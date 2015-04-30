@@ -20,7 +20,7 @@ namespace FormApp.Core.Forms
          *  Constructor(s)
          ***********************************/
 
-        public Circle(Point center,double radius) : base()
+        public Circle(string nom, Point center,double radius) : base(nom)
         {
             checkParameters(center, radius);
 
@@ -119,7 +119,8 @@ namespace FormApp.Core.Forms
         protected override string ToJsonSpecificMore()
         {
             return "";
-            //return "{\"P1\":{\"X\":" + P1.X + ",\"Y\":" + P1.Y + "},\"P2\":{\"X\":" + P2.X + ",\"Y\":" + P2.X + "},\"P3\":{\"X\":" + P3.X + ",\"Y\":" + P3.X + "}}";
+           /* return "\"Center\":{\"X\":" + Center.X.ToString().Replace(',', '.') + ",\"Y\":" + Center.Y.ToString().Replace(',', '.')
+             + "},\"Radius\":" + Radius.ToString().Replace(',', '.') + "}";*/
         }
     }
 }

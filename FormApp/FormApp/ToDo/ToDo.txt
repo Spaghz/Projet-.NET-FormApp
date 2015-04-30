@@ -1,5 +1,11 @@
-﻿Triangle, Carre, Rectangle héritent de Polygone
-Cercle & Segment à côté de Polygone
+﻿Triangle, Carre, Rectangle héritent de Polygone (fait)
+Cercle & Segment à côté de Polygone (fait)
+Probleme avec Pointer NULL avec les Cercles
 
--> Ajouter un membre privé "nom" à Form
+Dans le main, les tests sont fait, à part le test de Cercle qui est commenté
+
+-> Constructeur avec le nom (fait partiellement)
+Pour les deuxièmes constructeurs
+
+
 -> Réussir à serializer

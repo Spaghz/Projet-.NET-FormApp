@@ -18,7 +18,7 @@ namespace FormApp.Core.Forms
         /***********************************
          *  Constructor(s)
          ***********************************/
-        public Polygon() : base() 
+        public Polygon(string nom) : base(nom) 
         {
             _points = new List<Point>();
         }

@@ -1,36 +1,39 @@
-﻿using FormApp.Core.Forms;
-using FormApp.Core.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using FormApp.Core.Forms;
+using FormApp.Core.Utils;
+
 namespace FormApp.Core.Forms
 {
-    public sealed class Triangle : Polygon
+    public class Rectangle : Polygon 
     {
+        private Point _p1, _p2, _p3, _p4;
 
-        private Point _p1, _p2, _p3;
-
-        public Triangle(string nom, Point p1, Point p2,Point p3)
+        public Rectangle(string nom, Point p1, Point p2,Point p3, Point p4)
             : base(nom)
         {
             _p1 = p1;
             _p2 = p2;
             _p3 = p3;
+            _p4 = p4;
 
             this.AddPoint(p1);
             this.AddPoint(p2);
             this.AddPoint(p3);
+            this.AddPoint(p4);
         }
 
-        public Triangle(Color color, Point p1, Point p2, Point p3)
+        public Rectangle(Color color, Point p1, Point p2, Point p3, Point p4)
             : base(color)
         {
             this.AddPoint(p1);
             this.AddPoint(p2);
             this.AddPoint(p3);
+            this.AddPoint(p4);
         }
 
         public Point P1
@@ -51,24 +54,21 @@ namespace FormApp.Core.Forms
             set { _p3 = value; }
         }
 
+        public Point P4
+        {
+            get { return _p4; }
+            set { _p4 = value; }
+        }
+
+
         public override double Area
         {
             get 
             { 
-                /*  Heron's formula :
-                 *  A = sqrt(s(s-a)(s-b)(s-c))
-                 *  
-                 *  s = (1/2)(a+b+c)
-                 *  a,b,c : sides of the trinalge
-                 */
-
-                Segment a = new Segment("a",P1, P2),
-                        b = new Segment("b",P2, P3),
-                        c = new Segment("c",P3, P1);
-
-                double s = (a.Length + b.Length + c.Length)/2;
-
-                return Math.Sqrt(s * (s - a.Length) * (s - b.Length) * (s - c.Length));
+                Segment a = new Segment("a", P1, P2),
+                        b = new Segment("b", P2, P3);
+                     
+               return (a.Length * b.Length);
             }
         }
 
@@ -76,7 +76,11 @@ namespace FormApp.Core.Forms
         {
             return "\"P1\":{\"X\":" + P1.X.ToString().Replace(',', '.') + ",\"Y\":" + P1.Y.ToString().Replace(',', '.') 
                 + "},\"P2\":{\"X\":" + P2.X.ToString().Replace(',', '.') + ",\"Y\":" + P2.Y.ToString().Replace(',', '.') 
-                + "},\"P3\":{\"X\":" + P3.X.ToString().Replace(',', '.') + ",\"Y\":" + P3.Y.ToString().Replace(',', '.') + "}";
+                + "},\"P3\":{\"X\":" + P3.X.ToString().Replace(',', '.') + ",\"Y\":" + P3.Y.ToString().Replace(',', '.')
+                + "},\"P4\":{\"X\":" + P4.X.ToString().Replace(',', '.') + ",\"Y\":" + P4.Y.ToString().Replace(',', '.') 
+                + "}";
         }
     }
 }
+
+    
