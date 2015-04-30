@@ -42,6 +42,18 @@ namespace FormApp.Core.Forms
             get { throw new NotImplementedException(); }
         }
 
+        public Point getPoint(int i)
+        {
+            if (i > _points.Count)
+                throw new IndexOutOfRangeException("The point no-" + i + " does not exist in this form which contains only " + _points.Count + " poiints");
+            return this._points[i];
+        }
+
+        protected List<Point> Points
+        {
+            get { return _points; }
+        }
+
         /***********************************
          *  Methods
          ***********************************/

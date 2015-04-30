@@ -28,8 +28,8 @@ namespace FormApp.Core.Forms
 
         public Point P1
         {
-            get { return _p1; }
-            set { _p1 = value; }
+            get { return this.getPoint(1); }
+            set { this.getPoint(1) = value; }
         }
 
         public Point P2

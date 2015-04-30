@@ -8,6 +8,7 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using FormApp.UI;
 
 namespace FormApp
 {
@@ -15,6 +16,7 @@ namespace FormApp
     {
         static void Main(string[] args)
         {
+            
             Point A = new Point(0.6, 41);
             Point B = new Point(1, 1);
             Point C = new Point(5.6, -8);
@@ -49,7 +51,9 @@ namespace FormApp
             Console.WriteLine(T1.ToString());
             Console.ReadLine();
             Console.WriteLine("T'es trop chouchou");
-
+            
+            FormAppGUI formAppGUI = new FormAppGUI();
+            formAppGUI.Show();
         }
     }
 }
