@@ -31,6 +31,7 @@ namespace FormApp
             Rectangle R1 = new Rectangle("R1", rectA, rectB, rectC, rectD);
 
             Segment S1 = new Segment("S1", A, B);
+            Segment S2 = new Segment("S2", A, B);
 
             Circle C1 = new Circle("C1", A, 2.0);
 
@@ -48,9 +49,10 @@ namespace FormApp
             G.AddForm(T2);
             G.AddForm(R1);
             G.AddForm(S1);
-            //G.AddForm(C1);
+            G.AddForm(C1);
             Group G2 = new Group("g2");
-            G2.AddForm(R1);
+            G2.AddForm(S2);
+            G.AddForm(G2);
             string ContinuezABoufferDuChocolatCommeDesPorcs = "{" + G.ToJson() + "}";
             
             MemoryStream stream1 = new MemoryStream();

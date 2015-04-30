@@ -119,7 +119,7 @@ namespace FormApp.Core.Forms
         protected override string ToJsonSpecificMore()
         {
            return "\"Center\":{\"X\":" + Center.X.ToString().Replace(',', '.') + ",\"Y\":" + Center.Y.ToString().Replace(',', '.')
-             + "},\"Radius\":" + Radius.ToString().Replace(',', '.') + "}";
+             + "},\"Radius\":" + Radius.ToString().Replace(',', '.');
         }
     }
 }
