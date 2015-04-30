@@ -29,7 +29,7 @@ namespace FormApp.Core.Forms
         }
 
 
-        public Circle(Color color,Point center,double radius) : base(color)
+        public Circle(string nom, Color color,Point center,double radius) : base(nom, color)
         {
             checkParameters(center, radius);
 
@@ -118,9 +118,8 @@ namespace FormApp.Core.Forms
 
         protected override string ToJsonSpecificMore()
         {
-            return "";
-           /* return "\"Center\":{\"X\":" + Center.X.ToString().Replace(',', '.') + ",\"Y\":" + Center.Y.ToString().Replace(',', '.')
-             + "},\"Radius\":" + Radius.ToString().Replace(',', '.') + "}";*/
+           return "\"Center\":{\"X\":" + Center.X.ToString().Replace(',', '.') + ",\"Y\":" + Center.Y.ToString().Replace(',', '.')
+             + "},\"Radius\":" + Radius.ToString().Replace(',', '.') + "}";
         }
     }
 }

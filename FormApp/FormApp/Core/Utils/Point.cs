@@ -59,12 +59,14 @@ namespace FormApp.Core.Utils
             return new Point(p.X + v.X, p.Y + v.Y);
         }
 
-        public static bool operator == (Point P1,Point P2)
+        public static bool operator == (Point p1,Point p2)
         {
-            if (System.Object.ReferenceEquals(P1, P2))
+            if (System.Object.ReferenceEquals(p1, p2 ))
                 return true;
+            if (p1.Equals(null) || p2.Equals(null))
+                return false;
 
-            return ((P1.X == P2.X) && (P1.Y == P2.Y));
+            return ((p1.X == p2.X) && (p1.Y == p2.Y));
         }
 
         public static bool operator != (Point P1,Point P2)
@@ -74,7 +76,7 @@ namespace FormApp.Core.Utils
 
         public override bool Equals(object obj)
         {
-            if ((Point)obj == null)
+            if (obj == null)
                 return false;
 
             return this == (Point)obj;

@@ -23,12 +23,12 @@ namespace FormApp.Core.Forms
             _points = new List<Point>();
         }
 
-        public Polygon(Color color) : base(color) 
+        public Polygon(string nom, Color color) : base(nom, color) 
         {
             _points = new List<Point>();
         }
 
-        public Polygon(Polygon polygon) : base(polygon.BackgroundColor)
+        public Polygon(string nom, Polygon polygon) : base(nom, polygon.BackgroundColor)
         {
             _points = new List<Point>(polygon._points);
         }
@@ -77,7 +77,7 @@ namespace FormApp.Core.Forms
             if ((polygon == null) || (point == null))
                 throw new ArgumentNullException();
 
-            Polygon polygonToReturn = new Polygon(polygon);
+            Polygon polygonToReturn = new Polygon(polygon.Nom,polygon);
             polygonToReturn.AddPoint(point);
             return polygonToReturn;
         }

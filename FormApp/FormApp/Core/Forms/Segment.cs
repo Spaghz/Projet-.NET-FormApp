@@ -20,8 +20,8 @@ namespace FormApp.Core.Forms
             _p2 = p2;
         }
 
-        public Segment(Color color,Point p1, Point p2)
-            : base(color)
+        public Segment(string nom, Color color,Point p1, Point p2)
+            : base(nom, color)
         {
             //checkParameters(p1,p2);
 

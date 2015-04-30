@@ -32,7 +32,7 @@ namespace FormApp
 
             Segment S1 = new Segment("S1", A, B);
 
-            //Circle C1 = new Circle("C1", A, 2.0);
+            Circle C1 = new Circle("C1", A, 2.0);
 
             List<string> test = new List<string>();
             test.Add("Loredane");
@@ -48,7 +48,7 @@ namespace FormApp
             G.AddForm(T2);
             G.AddForm(R1);
             G.AddForm(S1);
-           // G.AddForm(C1);
+            G.AddForm(C1);
             Group G2 = new Group("g2");
             G2.AddForm(R1);
             string ContinuezABoufferDuChocolatCommeDesPorcs = "{" + G.ToJson() + "}";

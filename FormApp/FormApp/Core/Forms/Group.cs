@@ -27,7 +27,7 @@ namespace FormApp.Core.Forms
             _singleColorGroup = false;
         }
 
-        public Group(Color color) : base(color)
+        public Group(string nom, Color color) : base(nom, color)
         {
             _forms = new List<Form>();
             _singleColorGroup = true;

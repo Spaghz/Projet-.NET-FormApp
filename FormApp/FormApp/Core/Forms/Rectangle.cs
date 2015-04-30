@@ -11,24 +11,19 @@ namespace FormApp.Core.Forms
 {
     public class Rectangle : Polygon 
     {
-        private Point _p1, _p2, _p3, _p4;
-
+     
         public Rectangle(string nom, Point p1, Point p2,Point p3, Point p4)
             : base(nom)
         {
-            _p1 = p1;
-            _p2 = p2;
-            _p3 = p3;
-            _p4 = p4;
-
+           
             this.AddPoint(p1);
             this.AddPoint(p2);
             this.AddPoint(p3);
             this.AddPoint(p4);
         }
 
-        public Rectangle(Color color, Point p1, Point p2, Point p3, Point p4)
-            : base(color)
+        public Rectangle(string nom, Color color, Point p1, Point p2, Point p3, Point p4)
+            : base(nom, color)
         {
             this.AddPoint(p1);
             this.AddPoint(p2);
@@ -38,26 +33,26 @@ namespace FormApp.Core.Forms
 
         public Point P1
         {
-            get { return _p1; }
-            set { _p1 = value; }
+            get { return this.Points[1]; }
+            set { this.Points[1] = value; }
         }
 
         public Point P2
         {
-            get { return _p2; }
-            set { _p2 = value; }
+            get { return this.Points[2]; }
+            set { this.Points[2] = value; }
         }
 
         public Point P3
         {
-            get { return _p3; }
-            set { _p3 = value; }
+            get { return this.Points[3]; }
+            set { this.Points[3] = value; }
         }
 
         public Point P4
         {
-            get { return _p4; }
-            set { _p4 = value; }
+            get { return this.Points[4]; }
+            set { this.Points[4] = value; }
         }
 
 

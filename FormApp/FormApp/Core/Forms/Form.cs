@@ -31,8 +31,9 @@ namespace FormApp.Core.Forms
             _nom = nom;
         }
 
-        protected Form(Color backgroundColor)
+        protected Form(string nom, Color backgroundColor)
         {
+            _nom = nom;
             _backgroundColor = backgroundColor;
         }
 

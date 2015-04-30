@@ -18,8 +18,8 @@ namespace FormApp.Core.Forms
             this.AddPoint(p3);
         }
 
-        public Triangle(Color color, Point p1, Point p2, Point p3)
-            : base(color)
+        public Triangle(string nom, Color color, Point p1, Point p2, Point p3)
+            : base(nom, color)
         {
             this.AddPoint(p1);
             this.AddPoint(p2);
