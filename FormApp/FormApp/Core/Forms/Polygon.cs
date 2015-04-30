@@ -42,6 +42,11 @@ namespace FormApp.Core.Forms
             get { throw new NotImplementedException(); }
         }
 
+        public List<Point> Points
+        {
+            get { return _points; }
+        }
+
         /***********************************
          *  Methods
          ***********************************/

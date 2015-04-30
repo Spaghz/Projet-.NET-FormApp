@@ -10,16 +10,9 @@ namespace FormApp.Core.Forms
 {
     public sealed class Triangle : Polygon
     {
-
-        private Point _p1, _p2, _p3;
-
         public Triangle(string nom, Point p1, Point p2,Point p3)
             : base(nom)
         {
-            _p1 = p1;
-            _p2 = p2;
-            _p3 = p3;
-
             this.AddPoint(p1);
             this.AddPoint(p2);
             this.AddPoint(p3);
@@ -35,20 +28,20 @@ namespace FormApp.Core.Forms
 
         public Point P1
         {
-            get { return _p1; }
-            set { _p1 = value; }
+            get { return this.Points[1]; }
+            set { this.Points[1] = value; }
         }
 
         public Point P2
         {
-            get { return _p2; }
-            set { _p2 = value; }
+            get { return this.Points[2]; }
+            set { this.Points[2] = value; }
         }
 
         public Point P3
         {
-            get { return _p3; }
-            set { _p3 = value; }
+            get { return this.Points[3]; }
+            set { this.Points[3] = value; }
         }
 
         public override double Area
