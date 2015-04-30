@@ -48,7 +48,7 @@ namespace FormApp
             G.AddForm(T2);
             G.AddForm(R1);
             G.AddForm(S1);
-            G.AddForm(C1);
+            //G.AddForm(C1);
             Group G2 = new Group("g2");
             G2.AddForm(R1);
             string ContinuezABoufferDuChocolatCommeDesPorcs = "{" + G.ToJson() + "}";

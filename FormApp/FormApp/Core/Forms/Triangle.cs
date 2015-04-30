@@ -28,20 +28,20 @@ namespace FormApp.Core.Forms
 
         public Point P1
         {
-            get { return this.Points[1]; }
-            set { this.Points[1] = value; }
+            get { return this.Points[0]; }
+            set { this.Points[0] = value; }
         }
 
         public Point P2
         {
-            get { return this.Points[2]; }
-            set { this.Points[2] = value; }
+            get { return this.Points[1]; }
+            set { this.Points[1] = value; }
         }
 
         public Point P3
         {
-            get { return this.Points[3]; }
-            set { this.Points[3] = value; }
+            get { return this.Points[2]; }
+            set { this.Points[2] = value; }
         }
 
         public override double Area

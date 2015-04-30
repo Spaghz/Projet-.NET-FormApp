@@ -63,7 +63,8 @@ namespace FormApp.Core.Utils
         {
             if (System.Object.ReferenceEquals(p1, p2 ))
                 return true;
-            if (p1.Equals(null) || p2.Equals(null))
+
+            if (((object)p1 == null) || ((object)p2 == null))
                 return false;
 
             return ((p1.X == p2.X) && (p1.Y == p2.Y));
