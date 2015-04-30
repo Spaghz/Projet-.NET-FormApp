@@ -18,5 +18,12 @@ namespace FormApp.Core.Forms
             get;
         }
 
+
+        protected override string ToJsonSpecific()
+        {
+            return "\"specificData\":{" + ToJsonSpecificMore()+"}" ;
+        }
+
+        abstract protected string ToJsonSpecificMore();
     }
 }

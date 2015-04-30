@@ -1,3 +1,7 @@
-﻿<xml>
-  
-</xml>
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Forms>
+  <Form>
+    <id>1</id>
+    <name>Triangle</name>    
+</Form>
+</Forms>

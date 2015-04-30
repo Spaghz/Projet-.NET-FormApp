@@ -14,7 +14,7 @@ namespace FormApp.Core.Forms
 
         public Segment(Point p1,Point p2) : base()
         {
-            checkParameters(p1, p2);
+            //checkParameters(p1, p2);
 
             _p1 = p1;
             _p2 = p2;
@@ -23,7 +23,7 @@ namespace FormApp.Core.Forms
         public Segment(Color color,Point p1, Point p2)
             : base(color)
         {
-            checkParameters(p1,p2);
+            //checkParameters(p1,p2);
 
             _p1 = p1;
             _p2 = p2;
@@ -76,8 +76,18 @@ namespace FormApp.Core.Forms
 
         private static void checkEquality(Point p1, Point p2)
         {
-            if (p1 == p2)
+            //if (p1 == p2)
+            if (p1.Equals(p2))
                 throw new ArgumentException();
         }
+
+
+        protected override string ToJsonSpecificMore()
+        {
+            return "";
+            //return "{\"P1\":{\"X\":" + P1.X + ",\"Y\":" + P1.Y + "},\"P2\":{\"X\":" + P2.X + ",\"Y\":" + P2.X + "},\"P3\":{\"X\":" + P3.X + ",\"Y\":" + P3.X + "}}";
+        }
+
+      
     }
 }

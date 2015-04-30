@@ -1,0 +1,5 @@
+﻿Triangle, Carre, Rectangle héritent de Polygone
+Cercle & Segment à côté de Polygone
+
+-> Ajouter un membre privé "nom" à Form
+-> Réussir à serializer

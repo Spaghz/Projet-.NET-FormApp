@@ -8,24 +8,22 @@ using System.Threading.Tasks;
 
 namespace FormApp.Core.Forms
 {
-    public sealed class Triangle : FormSimple
+    public sealed class Triangle : Polygon
     {
-        private Point _p1, _p2,_p3;
-
         public Triangle(Point p1, Point p2,Point p3)
             : base()
         {
-            _p1 = p1;
-            _p2 = p2;
-            _p3 = p3;
+            this.AddPoint(p1);
+            this.AddPoint(p2);
+            this.AddPoint(p3);
         }
 
         public Triangle(Color color, Point p1, Point p2, Point p3)
             : base(color)
         {
-            _p1 = p1;
-            _p2 = p2;
-            _p3 = p3;
+            this.AddPoint(p1);
+            this.AddPoint(p2);
+            this.AddPoint(p3);
         }
 
         public Point P1
@@ -65,6 +63,11 @@ namespace FormApp.Core.Forms
 
                 return Math.Sqrt(s * (s - a.Length) * (s - b.Length) * (s - c.Length));
             }
+        }
+
+        protected override string ToJsonSpecificMore()
+        {
+            return "\"P1\":{\"X\":" + P1.X.ToString().Replace(',', '.') + ",\"Y\":" + P1.Y.ToString().Replace(',', '.') + "},\"P2\":{\"X\":" + P2.X.ToString().Replace(',', '.') + ",\"Y\":" + P2.Y.ToString().Replace(',', '.') + "},\"P3\":{\"X\":" + P3.X.ToString().Replace(',', '.') + ",\"Y\":" + P3.Y.ToString().Replace(',', '.') + "}";
         }
     }
 }

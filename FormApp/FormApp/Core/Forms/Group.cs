@@ -75,6 +75,20 @@ namespace FormApp.Core.Forms
             return false;
         }
 
+        protected override string ToJsonSpecific()
+        {
+            String res = "\"groupData\":";
+
+            List<string> forms = new List<String>();
+
+            foreach(Form f in this)
+            {
+                forms.Add(f.ToJson());
+            }
+
+            return res+StringUtils.implode(forms,',')+"";
+        }
+
         /***********************************
          * IEnumerable shit
          ***********************************/
