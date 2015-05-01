@@ -3,11 +3,13 @@ using FormApp.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FormApp.Core.Forms
 {
+    [DataContract]
     public sealed class Triangle : Polygon
     {
         public Triangle(string name, Point p1, Point p2,Point p3)

@@ -35,13 +35,10 @@ namespace FormApp.Core.Forms
         public Circle(string nom, Point center, Point randomEdgePoint)
             : base(nom)
         {
-
-            double radius_tmp = new Vector(center, randomEdgePoint).Length;
-            checkParameters(center, randomEdgePoint, radius_tmp);
-
             _center = center;
             _randomEdgePoint = randomEdgePoint;
-            _radius = radius_tmp;
+            _radius = new Vector(center, randomEdgePoint).Length;
+            checkParameters(center, randomEdgePoint, _radius);
 
         }
 
@@ -179,7 +176,7 @@ namespace FormApp.Core.Forms
         ***********************************/
 
 
-        protected Form translation(Vector v)
+        public override Form Translation(Vector v)
         {
             Circle c = new Circle(this);
             c.Center = v.translation(c.Center);
@@ -188,9 +185,9 @@ namespace FormApp.Core.Forms
             return c;
         }
 
-        protected Form rotation(Point p, float angle_radiant)
+        public override Form Rotation(Point p, float angle_radiant)
         {
-
+            throw new NotImplementedException();
         }
 
 

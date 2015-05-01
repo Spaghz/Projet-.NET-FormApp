@@ -108,9 +108,15 @@ namespace FormApp.Core.Forms
         /***********************************
         * Functions
         ***********************************/
-   
 
+        public override Form Translation(Vector v)
+        {
+            throw new NotImplementedException();
+        }
 
-
+        public override Form Rotation(Point p, float angle_radiant)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

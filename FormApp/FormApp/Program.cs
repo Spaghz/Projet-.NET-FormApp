@@ -54,15 +54,10 @@ namespace FormApp
             G2.AddForm(S2);
             G.AddForm(G2);
             string ContinuezABoufferDuChocolatCommeDesPorcs = "{" + G.ToJson() + "}";
-            
-            MemoryStream stream1 = new MemoryStream();
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Form));
-            ser.WriteObject(stream1, G);
-            stream1.Position = 0;
-            StreamReader sr = new StreamReader(stream1);
-            Console.Write("JSON form of Person object: ");
-            Console.WriteLine(sr.ReadToEnd());
 
+           // MemoryStream stream1 = new MemoryStream();
+            //DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Form));
+            //ser.WriteObject(stream1, T1);
 
             Console.WriteLine(T1.ToString());
             Console.ReadLine();

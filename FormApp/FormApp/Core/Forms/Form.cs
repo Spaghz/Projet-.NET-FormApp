@@ -8,6 +8,7 @@ using System.Runtime.Serialization;
 
 namespace FormApp.Core.Forms
 {
+    [DataContract]
     abstract public class Form
     {
         /***********************************
@@ -42,26 +43,31 @@ namespace FormApp.Core.Forms
          *  Properties
          ***********************************/
 
+        [DataMember]
         public Color BackgroundColor
         {
             get { return _backgroundColor; }
         }
 
+        [DataMember]
         public Color EdgeColor
         {
             get { return _edgeColor; }
         }
 
+        [DataMember]
         public Form Parent
         {
             get { return _parent; }
         }
 
+        [DataMember]
         public int EdgeSize
         {
             get { return _edgeSize; }
         }
 
+        [DataMember]
         public string Name
         {
             get { return _name; }
@@ -83,7 +89,7 @@ namespace FormApp.Core.Forms
 
         public string ToJson()
         {
-            return "\"" + this.Name + "\":" + ToJsonSpecific() + ",\"globalData\":{\"BackgroundColor\":" + (BackgroundColor == null ? "null" : BackgroundColor.ToString()) + ",\"EdgeColor\":" + (EdgeColor == null ? "null" : EdgeColor.ToString()) + ",\"Parent\":" + (Parent == null ? "null" : Parent.ToString()) + ",\"EdgeSize\":" + (EdgeSize == null ? "null" : EdgeSize.ToString()) + "}}";
+            return "\"" + this.Name + "\":" + ToJsonSpecific() + ",\"globalData\":{\"BackgroundColor\":" + BackgroundColor.ToString() + ",\"EdgeColor\":" + EdgeColor.ToString() + ",\"Parent\":" + (Parent == null ? "null" : Parent.ToString()) + ",\"EdgeSize\":" + EdgeSize.ToString() + "}}";
         }
 
         protected abstract string ToJsonSpecific();
@@ -95,9 +101,9 @@ namespace FormApp.Core.Forms
          *  Operations
          ***********************************/
 
-        protected abstract Form translation(Vector v);
+        public abstract Form Translation(Vector v);
 
-        protected abstract Form rotation(Point p, float angle_radiant);
+        public abstract Form Rotation(Point p, float angle_radiant);
 
     
     }

@@ -100,5 +100,15 @@ namespace FormApp.Core.Forms
             return "";
             //return "{\"P1\":{\"X\":" + P1.X + ",\"Y\":" + P1.Y + "},\"P2\":{\"X\":" + P2.X + ",\"Y\":" + P2.X + "},\"P3\":{\"X\":" + P3.X + ",\"Y\":" + P3.X + "}}";
         }
+
+        public override Form Translation(Vector v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Form Rotation(Point p, float angle_radiant)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

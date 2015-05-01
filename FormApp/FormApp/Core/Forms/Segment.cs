@@ -87,5 +87,15 @@ namespace FormApp.Core.Forms
                  + "},\"P2\":{\"X\":" + P2.X.ToString().Replace(',', '.') + ",\"Y\":" + P2.Y.ToString().Replace(',', '.')
                  + "}";
        }
+
+        public override Form Translation(Vector v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Form Rotation(Point p, float angle_radiant)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
