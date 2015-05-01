@@ -12,8 +12,8 @@ namespace FormApp.Core.Forms
     public class Rectangle : Polygon 
     {
      
-        public Rectangle(string nom, Point p1, Point p2,Point p3, Point p4)
-            : base(nom)
+        public Rectangle(string name, Point p1, Point p2,Point p3, Point p4)
+            : base(name)
         {
            
             this.AddPoint(p1);
@@ -22,8 +22,8 @@ namespace FormApp.Core.Forms
             this.AddPoint(p4);
         }
 
-        public Rectangle(string nom, Color color, Point p1, Point p2, Point p3, Point p4)
-            : base(nom, color)
+        public Rectangle(string name, Color backgroundColor,Color edgeColor, Point p1, Point p2, Point p3, Point p4)
+            : base(name, backgroundColor,edgeColor)
         {
             this.AddPoint(p1);
             this.AddPoint(p2);

@@ -8,13 +8,13 @@ using System.Runtime.Serialization;
 
 namespace FormApp.Core.Forms
 {
-    [DataContractAttribute]
     abstract public class Form
     {
         /***********************************
          *  Members
          ***********************************/
-        private Color   _backgroundColor=null,_edgeColor=null;
+        private Color   _backgroundColor    =   new Color(Color.WHITE),
+                        _edgeColor          =   new Color(Color.BLACK);
 
         private int     _id=-1;
 
@@ -22,19 +22,20 @@ namespace FormApp.Core.Forms
 
         private int     _edgeSize=1;
 
-        private string _nom;
+        private string  _name;
         /***********************************
          *  Constructor(s)
          ***********************************/
         protected Form(string nom)
         {
-            _nom = nom;
+            _name = nom;
         }
 
-        protected Form(string nom, Color backgroundColor)
+        protected Form(string name,Color backgroundColor,Color edgeColor)
         {
-            _nom = nom;
+            _name = name;
             _backgroundColor = backgroundColor;
+            _edgeColor = edgeColor;
         }
 
         /***********************************
@@ -61,9 +62,9 @@ namespace FormApp.Core.Forms
             get { return _edgeSize; }
         }
 
-        public string Nom
+        public string Name
         {
-            get { return _nom; }
+            get { return _name; }
         }
 
         abstract public double Area
@@ -82,7 +83,7 @@ namespace FormApp.Core.Forms
 
         public string ToJson()
         {
-            return "\"" + this.Nom + "\":" + ToJsonSpecific() + ",\"globalData\":{\"BackgroundColor\":" + (BackgroundColor == null ? "null" : BackgroundColor.ToString()) + ",\"EdgeColor\":" + (EdgeColor == null ? "null" : EdgeColor.ToString()) + ",\"Parent\":" + (Parent == null ? "null" : Parent.ToString()) + ",\"EdgeSize\":" + (EdgeSize == null ? "null" : EdgeSize.ToString()) + "}}";
+            return "\"" + this.Name + "\":" + ToJsonSpecific() + ",\"globalData\":{\"BackgroundColor\":" + (BackgroundColor == null ? "null" : BackgroundColor.ToString()) + ",\"EdgeColor\":" + (EdgeColor == null ? "null" : EdgeColor.ToString()) + ",\"Parent\":" + (Parent == null ? "null" : Parent.ToString()) + ",\"EdgeSize\":" + (EdgeSize == null ? "null" : EdgeSize.ToString()) + "}}";
         }
 
         protected abstract string ToJsonSpecific();

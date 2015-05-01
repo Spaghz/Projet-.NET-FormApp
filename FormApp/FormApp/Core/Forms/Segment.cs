@@ -12,18 +12,18 @@ namespace FormApp.Core.Forms
     {
         private Point _p1, _p2;
 
-        public Segment(string nom, Point p1,Point p2) : base(nom)
+        public Segment(string name, Point p1,Point p2) : base(name)
         {
-            //checkParameters(p1, p2);
+            checkParameters(p1, p2);
 
             _p1 = p1;
             _p2 = p2;
         }
 
-        public Segment(string nom, Color color,Point p1, Point p2)
-            : base(nom, color)
+        public Segment(string name, Color backgroundColor,Color edgeColor,Point p1, Point p2)
+            : base(name, backgroundColor,edgeColor)
         {
-            //checkParameters(p1,p2);
+            checkParameters(p1,p2);
 
             _p1 = p1;
             _p2 = p2;
@@ -70,15 +70,14 @@ namespace FormApp.Core.Forms
 
         private static void checkNullParameters(Point p1, Point p2)
         {
-            if ((p1 == null) || (p2 == null))
+            if (((object)p1 == null) || ((object)p2 == null))
                 throw new ArgumentNullException();
         }
 
         private static void checkEquality(Point p1, Point p2)
         {
-            //if (p1 == p2)
-            if (p1.Equals(p2))
-                throw new ArgumentException();
+            if (p1 == p2)
+                throw new ArgumentException("Segment creation failed : the two points are equals.");
         }
 
 

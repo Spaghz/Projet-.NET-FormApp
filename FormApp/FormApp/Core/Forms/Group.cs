@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace FormApp.Core.Forms
 {
@@ -21,13 +22,13 @@ namespace FormApp.Core.Forms
         /***********************************
          *  Constructor(s)
          ***********************************/
-        public Group(string nom) : base(nom) 
+        public Group(string name) : base(name) 
         {
             _forms = new List<Form>();
             _singleColorGroup = false;
         }
 
-        public Group(string nom, Color color) : base(nom, color)
+        public Group(string name, Color backgroundColor,Color edgeColor) : base(name, backgroundColor,edgeColor)
         {
             _forms = new List<Form>();
             _singleColorGroup = true;
@@ -55,7 +56,7 @@ namespace FormApp.Core.Forms
          ***********************************/
         public void AddForm(Form f)
         {
-            if (isPresent(f))
+            if (this.isPresent(f))
                 throw new ArgumentException("Can not add a form that is already in the group.");
             if (f.Parent != null)
                 throw new ArgumentException("Form already belongs to a group, you must detach it first.");

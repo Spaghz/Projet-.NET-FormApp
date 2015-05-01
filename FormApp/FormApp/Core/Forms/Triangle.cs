@@ -10,16 +10,16 @@ namespace FormApp.Core.Forms
 {
     public sealed class Triangle : Polygon
     {
-        public Triangle(string nom, Point p1, Point p2,Point p3)
-            : base(nom)
+        public Triangle(string name, Point p1, Point p2,Point p3)
+            : base(name)
         {
             this.AddPoint(p1);
             this.AddPoint(p2);
             this.AddPoint(p3);
         }
 
-        public Triangle(string nom, Color color, Point p1, Point p2, Point p3)
-            : base(nom, color)
+        public Triangle(string name, Color backgroundColor,Color edgeColor, Point p1, Point p2, Point p3)
+            : base(name, backgroundColor,edgeColor)
         {
             this.AddPoint(p1);
             this.AddPoint(p2);

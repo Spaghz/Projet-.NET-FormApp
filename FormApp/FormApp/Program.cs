@@ -40,7 +40,7 @@ namespace FormApp
             test.Add("Daniel");
             test.Add("Tocman");
             Console.WriteLine(StringUtils.implode(test, ','));
-            Console.WriteLine(T1.Nom);
+            Console.WriteLine(T1.Name);
 
 
             string DanielGrosPd = T1.ToJson();
@@ -56,8 +56,8 @@ namespace FormApp
             string ContinuezABoufferDuChocolatCommeDesPorcs = "{" + G.ToJson() + "}";
             
             MemoryStream stream1 = new MemoryStream();
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Triangle));
-            ser.WriteObject(stream1, T1);
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Form));
+            ser.WriteObject(stream1, G);
             stream1.Position = 0;
             StreamReader sr = new StreamReader(stream1);
             Console.Write("JSON form of Person object: ");

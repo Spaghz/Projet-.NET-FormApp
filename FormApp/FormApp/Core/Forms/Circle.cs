@@ -29,7 +29,7 @@ namespace FormApp.Core.Forms
         }
 
 
-        public Circle(string nom, Color color,Point center,double radius) : base(nom, color)
+        public Circle(string nom, Color backgroundColor,Color edgeColor,Point center,double radius) : base(nom, backgroundColor,edgeColor)
         {
             checkParameters(center, radius);
 

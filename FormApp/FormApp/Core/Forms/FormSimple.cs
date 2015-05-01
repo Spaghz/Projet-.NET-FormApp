@@ -10,8 +10,8 @@ namespace FormApp.Core.Forms
 {
     abstract public class FormSimple : Form
     {
-        protected FormSimple(string nom) : base(nom) {}
-        protected FormSimple(string nom, Color color) : base(nom, color) { }
+        protected FormSimple(string name) : base(name) {}
+        protected FormSimple(string name, Color backgroundColor,Color edgeColor) : base(name, backgroundColor,edgeColor) { }
 
         abstract public override double Area
         {
