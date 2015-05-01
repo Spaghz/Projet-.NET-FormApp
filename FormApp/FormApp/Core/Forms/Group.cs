@@ -91,7 +91,7 @@ namespace FormApp.Core.Forms
         }
 
         /***********************************
-         * IEnumerable shit
+         * IEnumerable 
          ***********************************/
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -103,5 +103,14 @@ namespace FormApp.Core.Forms
         {
             return new GroupEnum(_forms);
         }
+
+
+        /***********************************
+        * Functions
+        ***********************************/
+   
+
+
+
     }
 }

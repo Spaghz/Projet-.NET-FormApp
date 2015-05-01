@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FormApp.Core.Forms.Circle" Collapsed="true">
+    <Position X="1.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAIAAAAAAIAAAAAgICgCgAAAAAAAIAOAAAAAQEIAiA=</HashCode>
+      <FileName>Core\Forms\Circle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormApp.Core.Forms.Polygon" Collapsed="true">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQgBAEwAAgAAAAAAAAAAAEAAAAAQAAAAA=</HashCode>
+      <FileName>Core\Forms\Polygon.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FormApp.Core.Forms.Rectangle" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAgAQAAAACAAAAAAABAAQAAAAA=</HashCode>
+      <FileName>Core\Forms\Rectangle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormApp.Core.Forms.Segment" Collapsed="true">
+    <Position X="3.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAgAAAAAAAAAAAAAAAgCQhAAACAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Core\Forms\Segment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormApp.Core.Forms.FormSimple" Collapsed="true">
+    <Position X="3.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Core\Forms\FormSimple.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormApp.Core.Forms.Form" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCIAAAAAIAAAIAAADAQAQQSgAAAAAAICAAAQAABAA=</HashCode>
+      <FileName>Core\Forms\Form.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormApp.Core.Forms.Group" Collapsed="true">
+    <Position X="8.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAEQAAAAAAEAAAAAQAIBAA=</HashCode>
+      <FileName>Core\Forms\Group.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FormApp.Core.Forms.Triangle" Collapsed="true">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAgAQAAAACAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Core\Forms\Triangle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormApp.Core.Utils.Point" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAQAAAAEwAAAAAAAAAAAAIAAAAAAAAAAYiA=</HashCode>
+      <FileName>Core\Utils\Point.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

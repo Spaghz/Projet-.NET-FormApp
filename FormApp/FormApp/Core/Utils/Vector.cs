@@ -37,6 +37,12 @@ namespace FormApp.Core.Utils
             set { _y = value; }
         }
 
+        public double Length
+        {
+            get { return Math.Sqrt(X * X + Y * Y); }
+        }
+
+
         // Method
         public bool isVectorNull()
         {
@@ -73,5 +79,11 @@ namespace FormApp.Core.Utils
             if ((P1 == null) || (P2 == null))
                 throw new ArgumentNullException();
         }
+
+        public Point translation(Point P)
+        {
+            return new Point(P.X + this.X, P.Y + this.Y);
+        }
+
     }
 }

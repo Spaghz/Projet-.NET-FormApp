@@ -52,7 +52,7 @@ namespace FormApp.Core.Forms
                  *  A = sqrt(s(s-a)(s-b)(s-c))
                  *  
                  *  s = (1/2)(a+b+c)
-                 *  a,b,c : sides of the trinalge
+                 *  a,b,c : sides of the trianlge
                  */
 
                 Segment a = new Segment("a",P1, P2),

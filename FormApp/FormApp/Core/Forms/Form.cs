@@ -87,5 +87,18 @@ namespace FormApp.Core.Forms
         }
 
         protected abstract string ToJsonSpecific();
+
+
+
+
+        /***********************************
+         *  Operations
+         ***********************************/
+
+        protected abstract Form translation(Vector v);
+
+        protected abstract Form rotation(Point p, float angle_radiant);
+
+    
     }
 }

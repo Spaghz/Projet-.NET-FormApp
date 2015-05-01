@@ -14,6 +14,7 @@ namespace FormApp.Core.Forms
          ***********************************/
 
         private Point   _center;
+        private Point   _randomEdgePoint;
         private double  _radius;
 
         /***********************************
@@ -22,20 +23,53 @@ namespace FormApp.Core.Forms
 
         public Circle(string nom, Point center,double radius) : base(nom)
         {
-            checkParameters(center, radius);
+
+            Point tmp = new Point(center.X + radius, center.Y);
+            checkParameters(center, tmp, radius);
 
             _center = center;
+            _randomEdgePoint = tmp; 
             _radius = radius;
         }
+
+        public Circle(string nom, Point center, Point randomEdgePoint)
+            : base(nom)
+        {
+
+            double radius_tmp = new Vector(center, randomEdgePoint).Length;
+            checkParameters(center, randomEdgePoint, radius_tmp);
+
+            _center = center;
+            _randomEdgePoint = randomEdgePoint;
+            _radius = radius_tmp;
+
+        }
+
 
 
         public Circle(string nom, Color backgroundColor,Color edgeColor,Point center,double radius) : base(nom, backgroundColor,edgeColor)
         {
-            checkParameters(center, radius);
+
+            Point tmp_randomEdgePoint = new Point(center.X + radius, center.Y);
+            checkParameters(center, tmp_randomEdgePoint, radius);
+
 
             _center = center;
+            _randomEdgePoint = tmp_randomEdgePoint;
             _radius = radius;
+
         }
+
+        public Circle(Circle c)
+            : base(c.Name)
+        {
+            _center = c.Center;
+            _randomEdgePoint = c.RandomEdgePoint;
+            _radius = c.Radius;
+
+        }
+
+
 
         /***********************************
          *  Properties
@@ -45,6 +79,12 @@ namespace FormApp.Core.Forms
         {
             get { return _center; }
             set { _center = value; }
+        }
+
+        public Point RandomEdgePoint
+        {
+            get { return _randomEdgePoint; }
+            set { _randomEdgePoint = value; }
         }
 
         public double Radius
@@ -94,13 +134,13 @@ namespace FormApp.Core.Forms
         }
 
         /***********************************
-         *  Private methods
+         *  Check methods
          ***********************************/
 
-        private static void checkParameters(Point center, double radius)
+        private static void checkParameters(Point center, Point randomEdgePoint, double radius)
         {
             checkCenter(center);
-
+            checkRandomPointEdgePoint(randomEdgePoint);
             checkRadius(radius);
         }
 
@@ -116,10 +156,46 @@ namespace FormApp.Core.Forms
                 throw new ArgumentNullException();
         }
 
+        private static void checkRandomPointEdgePoint(Point randomEdgePoint)
+        {
+            if (randomEdgePoint == null)
+                throw new ArgumentNullException();
+        }
+
+
+        /***********************************
+         *  Utils 
+         ***********************************/
+
         protected override string ToJsonSpecificMore()
         {
            return "\"Center\":{\"X\":" + Center.X.ToString().Replace(',', '.') + ",\"Y\":" + Center.Y.ToString().Replace(',', '.')
              + "},\"Radius\":" + Radius.ToString().Replace(',', '.');
         }
+
+
+        /***********************************
+        *  Operations
+        ***********************************/
+
+
+        protected Form translation(Vector v)
+        {
+            Circle c = new Circle(this);
+            c.Center = v.translation(c.Center);
+            
+
+            return c;
+        }
+
+        protected Form rotation(Point p, float angle_radiant)
+        {
+
+        }
+
+
+
+
+
     }
 }
