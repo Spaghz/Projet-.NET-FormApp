@@ -53,9 +53,11 @@
     <Compile Include="Core\Forms\Rectangle.cs" />
     <Compile Include="Core\Forms\Segment.cs" />
     <Compile Include="Core\Forms\Triangle.cs" />
+    <Compile Include="Core\Utils\AssetsLocalizer.cs" />
     <Compile Include="Core\Utils\Color.cs" />
     <Compile Include="Core\Utils\Point.cs" />
     <Compile Include="Core\Utils\StringUtils.cs" />
+    <Compile Include="Core\Utils\TypeLoader.cs" />
     <Compile Include="Core\Utils\Vector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

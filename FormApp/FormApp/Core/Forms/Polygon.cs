@@ -110,5 +110,10 @@ namespace FormApp.Core.Forms
         {
             throw new NotImplementedException();
         }
+
+        public override int Type
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }
