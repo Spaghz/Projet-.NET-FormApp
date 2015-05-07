@@ -33,5 +33,34 @@ namespace FormApp.Core.Utils
 
             return int.Parse(hexValue, System.Globalization.NumberStyles.HexNumber);
         }
+
+        /// <summary>
+        /// Converts a int color into RGB.
+        /// Example : WHITE color is "16777215" and will become : 255, 255, 255
+        /// </summary>
+        /// <param name="intValue">int containing the color value (must be 6 characters long)</param>
+        /// <returns></returns>
+        public static int[] intToRgb(int intValue)
+        {
+             //if (intValue.ToString().Length != 6)
+               //  throw new ArgumentException("hexValue is not a color string value.");
+            
+            string hexValue = intValue.ToString("X6");
+            int[] rgb = new int[3];
+            rgb[0] = int.Parse(hexValue.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+            rgb[1] = int.Parse(hexValue.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+            rgb[2] = int.Parse(hexValue.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+
+             return rgb;
+        }
+
+
+        /// <summary>
+        /// Converts a RGB to Hexa.
+        /// </summary>
+        public static String rgbToHex(byte R, byte G, byte B)
+        {
+            return (R.ToString("X2") + G.ToString("X2") + B.ToString("X2"));
+        }
     }
 }

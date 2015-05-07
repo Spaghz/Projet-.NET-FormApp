@@ -12,6 +12,14 @@ namespace FormApp.Core.Forms
     {
         private Point _p1, _p2;
 
+
+        public Segment(string name)
+            : base(name)
+        {
+            _p1 = null;
+            _p2 = null; 
+        }
+
         public Segment(string name, Point p1,Point p2) : base(name)
         {
             checkParameters(p1, p2);
@@ -96,6 +104,45 @@ namespace FormApp.Core.Forms
         public override Form Rotation(Point p, float angle_radiant)
         {
             throw new NotImplementedException();
+        }
+
+
+        /***********************************
+         *  Draw
+         ***********************************/
+        public override void Draw(System.Drawing.Graphics g, System.Drawing.Pen pen)
+        {
+            int[] rgb = EdgeColor.intToRgb();
+            pen.Color = System.Drawing.Color.FromArgb(rgb[0], rgb[1], rgb[2]);
+            g.DrawLine(pen, (System.Drawing.Point) this.P1, (System.Drawing.Point) this.P2);
+        }
+
+
+        /***********************************
+         *  SetParameters
+         ***********************************/
+        public override void SetParamaters(int x1, int y1, int x2, int y2)
+        {
+            _p2 = new Point(x2, y2);
+        }
+
+
+        /***********************************
+         *  InitializeForm
+         ***********************************/
+        public override Form InitializeForm()
+        {
+            return new Segment("segment");
+        }
+
+
+        /***********************************
+        *  Create Form
+        ***********************************/
+        public override void Create(int x, int y, Color edgeColor, Color backgroundColor)
+        {
+            this.SetColors(edgeColor, backgroundColor);
+            _p1 = new Point(x, y);
         }
     }
 }

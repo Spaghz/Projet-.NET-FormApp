@@ -118,5 +118,48 @@ namespace FormApp.Core.Forms
         {
             throw new NotImplementedException();
         }
+
+
+        /***********************************
+         *  Draw
+         ***********************************/
+        public override void Draw(System.Drawing.Graphics g, System.Drawing.Pen pen)
+        {
+            foreach (Form fIn in _forms)
+                fIn.Draw(g, pen);
+        }
+
+        /***********************************
+         *  SetParameters
+         ***********************************/
+        public override void SetParamaters(int x1, int y1, int x2, int y2)
+        {
+            throw new NotImplementedException();
+        }
+
+        /***********************************
+         *  SetColors
+         ***********************************/
+        public override void SetColors(Color edgeColor, Color backgroundColor)
+        {
+            this.EdgeColor = edgeColor;
+            this.BackgroundColor = backgroundColor;
+        }
+
+        /***********************************
+         *  InitializeForm
+         ***********************************/
+        public override Form InitializeForm()
+        {
+            return new Group("group");
+        }
+
+        /***********************************
+        *  Create Form
+        ***********************************/
+        public override void Create(int x, int y, Color edgeColor, Color backgroundColor)
+        {
+            this.SetColors(edgeColor, backgroundColor);
+        }
     }
 }

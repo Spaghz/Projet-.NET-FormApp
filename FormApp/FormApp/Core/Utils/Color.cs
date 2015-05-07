@@ -18,9 +18,31 @@ namespace FormApp.Core.Utils
             _colorCode = colorCode;
         }
 
+        public Color(byte R, byte G , byte B)
+        {
+            _colorCode = StringUtils.hexToInt(StringUtils.rgbToHex(R, G, B)); 
+        }
+
+        public Color()
+        {
+            // TODO: Complete member initialization
+        }
+
+        public int ColorCode
+        {
+            get { return _colorCode; }
+            set { _colorCode = value; }
+        }
+
         public override string ToString()
         {
             return _colorCode.ToString();
         }
+
+        public int[] intToRgb()
+        {
+            return StringUtils.intToRgb(_colorCode);
+        }
+
     }
 }

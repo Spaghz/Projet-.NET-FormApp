@@ -24,5 +24,14 @@ namespace FormApp.Core.Forms
         }
 
         abstract protected string ToJsonSpecificMore();
+
+        /***********************************
+         *  SetColors
+         ***********************************/
+        public override void SetColors(Color edgeColor, Color backgroundColor)
+        {
+            this.EdgeColor = edgeColor;
+            this.BackgroundColor = backgroundColor;
+        } 
     }
 }

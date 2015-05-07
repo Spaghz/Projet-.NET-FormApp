@@ -21,6 +21,14 @@ namespace FormApp.Core.Forms
          *  Constructor(s)
          ***********************************/
 
+        public Circle(string nom) 
+            :base(nom)
+        {
+            _radius = 0.0;
+            _center = null;
+            _randomEdgePoint = null;
+        }
+
         public Circle(string nom, Point center,double radius) : base(nom)
         {
 
@@ -143,7 +151,8 @@ namespace FormApp.Core.Forms
 
         private static void checkRadius(double radius)
         {
-            if (radius <= 0)
+            //if (radius <= 0)
+            if(radius < 0)
                 throw new ArgumentException("Radius of a circle can not be inferior or equals to 0");
         }
 
@@ -191,8 +200,54 @@ namespace FormApp.Core.Forms
         }
 
 
+        /***********************************
+         *  Draw
+         ***********************************/
+        public override void Draw(System.Drawing.Graphics g, System.Drawing.Pen pen)
+        {
+            int[] rgb = EdgeColor.intToRgb();
+            pen.Color = System.Drawing.Color.FromArgb(rgb[0], rgb[1], rgb[2]);
+            g.DrawEllipse(pen, (System.Drawing.Rectangle)this);
+        }
 
 
+        /***********************************
+         *  Cast rectangle
+         ***********************************/
+        public static explicit operator System.Drawing.Rectangle(Circle circle)
+        {
+            return new System.Drawing.Rectangle((int)(circle.Center.X - circle.Radius),
+                                                                (int)(circle.Center.Y - circle.Radius),
+                                                                (int)(circle.Radius * 2), (int)(circle.Radius * 2));
+        }
 
+
+        /***********************************
+        *  SetParameters
+        ***********************************/
+        public override void SetParamaters(int x1, int y1, int x2, int y2)
+        {
+            this.Radius = (Math.Abs(x1 - x2) / 2.0);
+            this.Center = new Point(Math.Min(x1, x2) + this.Radius, Math.Min(y1, y2) + this.Radius);
+            this._randomEdgePoint = new Point(Center.X + Radius, Center.Y);
+        }
+
+
+        /***********************************
+         *  InitializeForm
+         ***********************************/
+        public override Form InitializeForm()
+        {
+            return new Circle("circle");
+        }
+
+
+        /***********************************
+        *  Create Form
+        ***********************************/
+        public override void Create(int x, int y, Color edgeColor, Color backgroundColor)
+        {
+            this.SetColors(edgeColor, backgroundColor);
+        }
     }
 }

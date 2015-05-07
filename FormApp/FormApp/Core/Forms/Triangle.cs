@@ -12,6 +12,11 @@ namespace FormApp.Core.Forms
     [DataContract]
     public sealed class Triangle : Polygon
     {
+        public Triangle(String name)
+            :base(name)
+        {
+        }
+
         public Triangle(string name, Point p1, Point p2,Point p3)
             : base(name)
         {
@@ -72,6 +77,15 @@ namespace FormApp.Core.Forms
             return "\"P1\":{\"X\":" + P1.X.ToString().Replace(',', '.') + ",\"Y\":" + P1.Y.ToString().Replace(',', '.') 
                 + "},\"P2\":{\"X\":" + P2.X.ToString().Replace(',', '.') + ",\"Y\":" + P2.Y.ToString().Replace(',', '.') 
                 + "},\"P3\":{\"X\":" + P3.X.ToString().Replace(',', '.') + ",\"Y\":" + P3.Y.ToString().Replace(',', '.') + "}";
+        }
+
+
+        /***********************************
+         *  InitializeForm
+         ***********************************/
+        public override Form InitializeForm()
+        {
+            return new Triangle("triangle");
         }
     }
 }

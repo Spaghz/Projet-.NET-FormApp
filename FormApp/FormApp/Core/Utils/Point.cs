@@ -29,13 +29,13 @@ namespace FormApp.Core.Utils
         public double X
         {
             get { return _x; }
-            //set { _x = value; }
+            set { _x = value; }
         }
 
         public double Y
         {
             get { return _y; }
-            //set { _y = value; }
+            set { _y = value; }
         }
 
         /***********************************
@@ -88,5 +88,13 @@ namespace FormApp.Core.Utils
             return base.GetHashCode();
         }
 
+
+        /***********************************
+       *  Cast point
+       ***********************************/
+        public static explicit operator System.Drawing.Point(Point point)
+        {
+            return new System.Drawing.Point((int)point.X, (int)point.Y);
+        }
     }
 }

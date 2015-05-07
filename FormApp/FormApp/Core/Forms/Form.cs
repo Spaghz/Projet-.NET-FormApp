@@ -47,12 +47,14 @@ namespace FormApp.Core.Forms
         public Color BackgroundColor
         {
             get { return _backgroundColor; }
+            set { _backgroundColor = value; }
         }
 
         [DataMember]
         public Color EdgeColor
         {
             get { return _edgeColor; }
+            set { _edgeColor = value; }
         }
 
         [DataMember]
@@ -71,6 +73,7 @@ namespace FormApp.Core.Forms
         public string Name
         {
             get { return _name; }
+            set { _name = value ;}
         }
 
         abstract public double Area
@@ -105,6 +108,30 @@ namespace FormApp.Core.Forms
 
         public abstract Form Rotation(Point p, float angle_radiant);
 
-    
+
+        /***********************************
+         *  Draw
+         ***********************************/
+        public abstract void Draw(System.Drawing.Graphics g, System.Drawing.Pen pen);
+
+        /***********************************
+         *  SetParameters
+         ***********************************/
+        public abstract void SetParamaters(int x1, int y1, int x2, int y2);
+
+        /***********************************
+         *  SetColors
+         ***********************************/
+        public abstract void SetColors(Color edgeColor, Color backgroundColor);
+
+        /***********************************
+         *  InitializeForm
+         ***********************************/
+        public abstract Form InitializeForm();
+
+        /***********************************
+        *  Create Form
+        ***********************************/
+        public abstract void Create(int x, int y, Color edgeColor, Color backgroundColor);
     }
 }
