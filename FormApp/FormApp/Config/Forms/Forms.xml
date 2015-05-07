@@ -3,5 +3,25 @@
   <Form>
     <id>1</id>
     <name>Triangle</name>    
-</Form>
+  </Form>
+  <Form>
+    <id>2</id>
+    <name>Segment</name>
+  </Form>
+  <Form>
+    <id>3</id>
+    <name>Rectangle</name>
+  </Form>
+  <Form>
+    <id>4</id>
+    <name>Polygon</name>
+  </Form>
+  <Form>
+    <id>5</id>
+    <name>Group</name>
+  </Form>
+  <Form>
+    <id>6</id>
+    <name>Circle</name>
+  </Form>
 </Forms>

@@ -81,6 +81,11 @@ namespace FormApp.Core.Forms
             get;
         }
 
+        abstract public int Type
+        {
+            get;
+        }
+
         /***********************************
          *  Methods
          ***********************************/
@@ -96,10 +101,6 @@ namespace FormApp.Core.Forms
         }
 
         protected abstract string ToJsonSpecific();
-
-
-
-
         /***********************************
          *  Operations
          ***********************************/
