@@ -30,6 +30,7 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnStrokeColor = new System.Windows.Forms.Button();
             this.btnColorDialog = new System.Windows.Forms.Button();
             this.btnTriangle = new System.Windows.Forms.Button();
             this.btnSegment = new System.Windows.Forms.Button();
@@ -37,6 +38,7 @@
             this.btnPolygon = new System.Windows.Forms.Button();
             this.btnCircle = new System.Windows.Forms.Button();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +63,7 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.btnStrokeColor);
             this.panel1.Controls.Add(this.btnColorDialog);
             this.panel1.Controls.Add(this.btnTriangle);
             this.panel1.Controls.Add(this.btnSegment);
@@ -72,15 +75,26 @@
             this.panel1.Size = new System.Drawing.Size(126, 355);
             this.panel1.TabIndex = 2;
             // 
+            // btnStrokeColor
+            // 
+            this.btnStrokeColor.BackColor = System.Drawing.Color.White;
+            this.btnStrokeColor.ForeColor = System.Drawing.Color.Black;
+            this.btnStrokeColor.Location = new System.Drawing.Point(26, 82);
+            this.btnStrokeColor.Name = "btnStrokeColor";
+            this.btnStrokeColor.Size = new System.Drawing.Size(64, 64);
+            this.btnStrokeColor.TabIndex = 11;
+            this.btnStrokeColor.UseVisualStyleBackColor = false;
+            this.btnStrokeColor.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnColorDialog
             // 
+            this.btnColorDialog.BackColor = System.Drawing.Color.Black;
             this.btnColorDialog.ForeColor = System.Drawing.Color.Black;
             this.btnColorDialog.Location = new System.Drawing.Point(26, 12);
             this.btnColorDialog.Name = "btnColorDialog";
-            this.btnColorDialog.Size = new System.Drawing.Size(68, 25);
+            this.btnColorDialog.Size = new System.Drawing.Size(64, 64);
             this.btnColorDialog.TabIndex = 10;
-            this.btnColorDialog.Text = "Color";
-            this.btnColorDialog.UseVisualStyleBackColor = true;
+            this.btnColorDialog.UseVisualStyleBackColor = false;
             this.btnColorDialog.Click += new System.EventHandler(this.btnColorDialog_Click);
             // 
             // btnTriangle
@@ -161,5 +175,7 @@
         private System.Windows.Forms.Button btnCircle;
         private System.Windows.Forms.Button btnColorDialog;
         private System.Windows.Forms.ColorDialog colorDialog;
+        private System.Windows.Forms.Button btnStrokeColor;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }

@@ -1,4 +1,4 @@
-﻿using FormApp.Core.Forms;
+﻿using FormApp.Core.Shapes;
 using FormApp.Core.Utils;
 using System;
 using System.Collections.Generic;
@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FormApp.Core.Forms
+namespace FormApp.Core.Shapes
 {
-    public sealed class Segment : FormSimple
+    public sealed class Segment : ShapeSimple
     {
         private Point _p1, _p2;
-
+        private static readonly int _type = 2;
 
         public Segment(string name)
             : base(name)
@@ -64,6 +64,11 @@ namespace FormApp.Core.Forms
             get  {return 0;}
         }
 
+        public override int Type
+        {
+            get { return _type; }
+        }
+
         public double Length
         {
             get { return Math.Sqrt(Math.Pow(P2.Y - P1.Y, 2) + Math.Pow(P2.X - P1.X, 2)); }
@@ -96,12 +101,12 @@ namespace FormApp.Core.Forms
                  + "}";
        }
 
-        public override Form Translation(Vector v)
+        public override Shape Translation(Vector v)
         {
             throw new NotImplementedException();
         }
 
-        public override Form Rotation(Point p, float angle_radiant)
+        public override Shape Rotation(Point p, float angle_radiant)
         {
             throw new NotImplementedException();
         }
@@ -130,7 +135,7 @@ namespace FormApp.Core.Forms
         /***********************************
          *  InitializeForm
          ***********************************/
-        public override Form InitializeForm()
+        public override Shape InitializeForm()
         {
             return new Segment("segment");
         }

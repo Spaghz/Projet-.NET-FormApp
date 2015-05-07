@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using FormApp.Core.Utils;
 
-namespace FormApp.Core.Forms
+namespace FormApp.Core.Shapes
 {
-    public sealed class Circle : FormSimple
+    public sealed class Circle : ShapeSimple
     {
         /***********************************
          *  Members
@@ -16,6 +16,7 @@ namespace FormApp.Core.Forms
         private Point   _center;
         private Point   _randomEdgePoint;
         private double  _radius;
+        private static readonly int _type = 6;
 
         /***********************************
          *  Constructor(s)
@@ -108,6 +109,11 @@ namespace FormApp.Core.Forms
             get { return Math.PI * Radius * Radius; }
         }
 
+        public override int Type
+        {
+            get { return _type; }
+        }
+
         /***********************************
          *  Operators overload
          ***********************************/
@@ -185,7 +191,7 @@ namespace FormApp.Core.Forms
         ***********************************/
 
 
-        public override Form Translation(Vector v)
+        public override Shape Translation(Vector v)
         {
             Circle c = new Circle(this);
             c.Center = v.translation(c.Center);
@@ -194,7 +200,7 @@ namespace FormApp.Core.Forms
             return c;
         }
 
-        public override Form Rotation(Point p, float angle_radiant)
+        public override Shape Rotation(Point p, float angle_radiant)
         {
             throw new NotImplementedException();
         }
@@ -236,7 +242,7 @@ namespace FormApp.Core.Forms
         /***********************************
          *  InitializeForm
          ***********************************/
-        public override Form InitializeForm()
+        public override Shape InitializeForm()
         {
             return new Circle("circle");
         }

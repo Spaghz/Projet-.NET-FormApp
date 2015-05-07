@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using FormApp.Core.Forms;
+using FormApp.Core.Shapes;
 using FormApp.Core.Utils;
 
-namespace FormApp.Core.Forms
+namespace FormApp.Core.Shapes
 {
     public class Rectangle : Polygon
     {
+        private static readonly int _type = 3;
+
         public Rectangle(string name)
             : base(name)
         {
@@ -63,6 +64,10 @@ namespace FormApp.Core.Forms
             set { this.Points[3] = value; }
         }
 
+        public override int Type
+        {
+            get { return _type; }
+        }
 
         public override double Area
         {
@@ -136,7 +141,7 @@ namespace FormApp.Core.Forms
         /***********************************
          *  InitializeForm
          ***********************************/
-        public override Form InitializeForm()
+        public override Shape InitializeForm()
         {
             return new Rectangle("rectangle");
         }

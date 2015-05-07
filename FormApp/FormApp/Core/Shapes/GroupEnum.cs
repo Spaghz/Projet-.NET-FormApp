@@ -5,23 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FormApp.Core.Forms
+namespace FormApp.Core.Shapes
 {
     /// <summary>
     /// No attribute to class to make it only available by same namespace (Group.cs)
     /// </summary>
     public class GroupEnum : IEnumerator
     {
-        private List<Form>  _forms;
+        private List<Shape>  _forms;
         int                 _pos;
 
-        public GroupEnum(List<Form> forms)
+        public GroupEnum(List<Shape> forms)
         {
             _forms = forms;
             _pos = -1;
         }
 
-        public Form Current
+        public Shape Current
         {
             get 
             {

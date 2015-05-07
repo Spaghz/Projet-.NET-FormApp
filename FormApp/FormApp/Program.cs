@@ -1,4 +1,4 @@
-﻿using FormApp.Core.Forms;
+﻿using FormApp.Core.Shapes;
 using FormApp.Core.Utils;
 using System;
 using System.Collections.Generic;
@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
+using FormApp.Core.DAO;
 
 namespace FormApp
 {
@@ -63,11 +64,34 @@ namespace FormApp
             Console.WriteLine(T1.ToString());
             Console.ReadLine();
             Console.WriteLine("T'es trop chouchou");
-            * */
+            */
 
+
+            /*
+             * JONATHAN : UPLOAD PHP
+             * 
+             *
+            Point A = new Point(0.6, 41);
+            Point B = new Point(1, 1);
+            Point C = new Point(5.6, -8);
+            Triangle T1 = new Triangle("T1", A, B, C);
+            Triangle T2 = new Triangle("T2", B, A, C);
+            string jSon = "{" + T1.ToJson() + "}";
+            DAOFormMySQL.Instance.Save(T1);
+             * */
+
+
+
+
+            /*
+             * 
+             * LOREDANE : GUI
+             * 
+             */
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+             
         }
     }
 }

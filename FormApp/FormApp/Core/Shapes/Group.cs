@@ -1,4 +1,4 @@
-﻿using FormApp.Core.Forms;
+﻿using FormApp.Core.Shapes;
 using FormApp.Core.Utils;
 using System;
 using System.Collections;
@@ -8,29 +8,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
-namespace FormApp.Core.Forms
+namespace FormApp.Core.Shapes
 {
-    public class Group : Form, IEnumerable
+    public class Group : Shape, IEnumerable
     {
         /***********************************
          *  Members
          ***********************************/
 
-        private List<Form>  _forms;
+        private List<Shape>  _forms;
         private bool        _singleColorGroup;
+        private static readonly int _type = 5;
 
         /***********************************
          *  Constructor(s)
          ***********************************/
         public Group(string name) : base(name) 
         {
-            _forms = new List<Form>();
+            _forms = new List<Shape>();
             _singleColorGroup = false;
         }
 
         public Group(string name, Color backgroundColor,Color edgeColor) : base(name, backgroundColor,edgeColor)
         {
-            _forms = new List<Form>();
+            _forms = new List<Shape>();
             _singleColorGroup = true;
         }
 
@@ -44,17 +45,22 @@ namespace FormApp.Core.Forms
             {
                 double area = 0;
 
-                foreach (Form f in this)
+                foreach (Shape f in this)
                     area += f.Area;
 
                 return area;
             }
         }
 
+        public override int Type
+        {
+            get { return _type; }
+        }
+
         /***********************************
          *  Public methods
          ***********************************/
-        public void AddForm(Form f)
+        public void AddForm(Shape f)
         {
             if (this.isPresent(f))
                 throw new ArgumentException("Can not add a form that is already in the group.");
@@ -67,9 +73,9 @@ namespace FormApp.Core.Forms
         /***********************************
          *  Private methods
          ***********************************/
-        private bool isPresent(Form f)
+        private bool isPresent(Shape f)
         {
-            foreach(Form groupForm in this)
+            foreach(Shape groupForm in this)
                 if (groupForm == f)
                     return true;
 
@@ -82,7 +88,7 @@ namespace FormApp.Core.Forms
 
             List<string> forms = new List<String>();
 
-            foreach(Form f in this)
+            foreach(Shape f in this)
             {
                 forms.Add(f.ToJson());
             }
@@ -109,12 +115,12 @@ namespace FormApp.Core.Forms
         * Functions
         ***********************************/
 
-        public override Form Translation(Vector v)
+        public override Shape Translation(Vector v)
         {
             throw new NotImplementedException();
         }
 
-        public override Form Rotation(Point p, float angle_radiant)
+        public override Shape Rotation(Point p, float angle_radiant)
         {
             throw new NotImplementedException();
         }
@@ -125,7 +131,7 @@ namespace FormApp.Core.Forms
          ***********************************/
         public override void Draw(System.Drawing.Graphics g, System.Drawing.Pen pen)
         {
-            foreach (Form fIn in _forms)
+            foreach (Shape fIn in _forms)
                 fIn.Draw(g, pen);
         }
 
@@ -149,7 +155,7 @@ namespace FormApp.Core.Forms
         /***********************************
          *  InitializeForm
          ***********************************/
-        public override Form InitializeForm()
+        public override Shape InitializeForm()
         {
             return new Group("group");
         }

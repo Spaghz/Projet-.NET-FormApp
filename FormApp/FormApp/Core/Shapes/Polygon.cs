@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using FormApp.Core.Utils;
 using System.Collections;
 
-namespace FormApp.Core.Forms
+namespace FormApp.Core.Shapes
 {
-    public class Polygon : FormSimple, IEnumerable
+    public class Polygon : ShapeSimple, IEnumerable
     {
         /***********************************
          *  Members
          ***********************************/
         private List<Point> _points;
+        private readonly static int _type = 4;
 
         /***********************************
          *  Constructor(s)
@@ -46,6 +47,11 @@ namespace FormApp.Core.Forms
         {
             get { return _points; }
             set { _points = value; }
+        }
+
+        public override int Type
+        {
+            get { return _type; }
         }
 
         /***********************************
@@ -102,12 +108,12 @@ namespace FormApp.Core.Forms
             //return "{\"P1\":{\"X\":" + P1.X + ",\"Y\":" + P1.Y + "},\"P2\":{\"X\":" + P2.X + ",\"Y\":" + P2.X + "},\"P3\":{\"X\":" + P3.X + ",\"Y\":" + P3.X + "}}";
         }
 
-        public override Form Translation(Vector v)
+        public override Shape Translation(Vector v)
         {
             throw new NotImplementedException();
         }
 
-        public override Form Rotation(Point p, float angle_radiant)
+        public override Shape Rotation(Point p, float angle_radiant)
         {
             throw new NotImplementedException();
         }
@@ -145,7 +151,7 @@ namespace FormApp.Core.Forms
         /***********************************
          *  InitializeForm
          ***********************************/
-        public override Form InitializeForm()
+        public override Shape InitializeForm()
         {
             return new Polygon("polygon");
         }

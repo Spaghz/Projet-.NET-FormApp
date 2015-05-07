@@ -45,16 +45,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Forms\Circle.cs" />
-    <Compile Include="Core\Forms\Form.cs" />
-    <Compile Include="Core\Forms\FormSimple.cs" />
-    <Compile Include="Core\Forms\Group.cs" />
-    <Compile Include="Core\Forms\GroupEnum.cs" />
-    <Compile Include="Core\Forms\Polygon.cs" />
-    <Compile Include="Core\Forms\PolygonEnum.cs" />
-    <Compile Include="Core\Forms\Rectangle.cs" />
-    <Compile Include="Core\Forms\Segment.cs" />
-    <Compile Include="Core\Forms\Triangle.cs" />
+    <Compile Include="Core\DAO\IDAOForm.cs" />
+    <Compile Include="Core\DAO\DAOFormMySQL.cs" />
+    <Compile Include="Core\Shapes\Circle.cs" />
+    <Compile Include="Core\Shapes\Shape.cs" />
+    <Compile Include="Core\Shapes\ShapeSimple.cs" />
+    <Compile Include="Core\Shapes\Group.cs" />
+    <Compile Include="Core\Shapes\GroupEnum.cs" />
+    <Compile Include="Core\Shapes\Polygon.cs" />
+    <Compile Include="Core\Shapes\PolygonEnum.cs" />
+    <Compile Include="Core\Shapes\Rectangle.cs" />
+    <Compile Include="Core\Shapes\Segment.cs" />
+    <Compile Include="Core\Shapes\Triangle.cs" />
+    <Compile Include="Core\Utils\AssetsLocalizer.cs" />
     <Compile Include="Core\Utils\Color.cs" />
     <Compile Include="Core\Utils\Point.cs" />
     <Compile Include="Core\Utils\StringUtils.cs" />
@@ -80,16 +83,48 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
-    <None Include="PHP\Config\auth.php" />
-    <None Include="PHP\Triangle.php" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\Forms\Forms.xml" />
+    <Content Include="PHP\test.html" />
+    <None Include="PHP\auth.php" />
+    <None Include="PHP\client.php" />
+    <None Include="PHP\config\.htaccess" />
+    <None Include="PHP\config\auth.php" />
+    <None Include="PHP\functions.php" />
+    <None Include="PHP\lib\changelog" />
+    <None Include="PHP\lib\class.nusoap_base.php" />
+    <None Include="PHP\lib\class.soapclient.php" />
+    <None Include="PHP\lib\class.soap_fault.php" />
+    <None Include="PHP\lib\class.soap_parser.php" />
+    <None Include="PHP\lib\class.soap_server.php" />
+    <None Include="PHP\lib\class.soap_transport_http.php" />
+    <None Include="PHP\lib\class.soap_val.php" />
+    <None Include="PHP\lib\class.wsdl.php" />
+    <None Include="PHP\lib\class.wsdlcache.php" />
+    <None Include="PHP\lib\class.xmlschema.php" />
+    <None Include="PHP\lib\nusoap.php" />
+    <None Include="PHP\lib\nusoapmime.php" />
+    <None Include="PHP\save.php" />
+    <None Include="PHP\server.php" />
+    <None Include="PHP\shapes\Circle.php" />
+    <None Include="PHP\shapes\COR\HandlerShapes.php" />
+    <None Include="PHP\shapes\COR\HandlerShapesLink.php" />
+    <None Include="PHP\shapes\COR\LinkRectangle.php" />
+    <None Include="PHP\shapes\COR\LinkTriangle.php" />
+    <None Include="PHP\shapes\Group.php" />
+    <None Include="PHP\shapes\Polygon.php" />
+    <None Include="PHP\shapes\Rectangle.php" />
+    <None Include="PHP\shapes\Segment.php" />
+    <None Include="PHP\shapes\Shape.php" />
+    <None Include="PHP\shapes\ShapeSimple.php" />
+    <None Include="PHP\shapes\Triangle.php" />
+    <None Include="PHP\test.php" />
     <None Include="ToDo\ToDo.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\SQL\" />
-    <Folder Include="Core\Forms\COR\" />
+    <Folder Include="Core\Shapes\COR\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">

@@ -1,4 +1,4 @@
-﻿using FormApp.Core.Forms;
+﻿using FormApp.Core.Shapes;
 using FormApp.Core.Utils;
 using FormApp.State;
 using System;
@@ -25,19 +25,20 @@ namespace FormApp
         private System.Drawing.Graphics     g;
         private System.Drawing.Pen          pen;
 
-        private List<Form>                  forms;
-        private Form                        formCurrent;
+        private List<Shape>                  forms;
+        private Shape                        formCurrent;
         
-        private Color                       colorCurrent;
+        private Color                       backgroundColor;
+        private Color                       strokeColor;
        
        
         public Form1()
         {
-            colorCurrent = new Color(Color.BLACK);
-            int[] rgb = colorCurrent.intToRgb();
+            backgroundColor = new Color(Color.BLACK);
+            int[] rgb = backgroundColor.intToRgb();
             pen = new System.Drawing.Pen(System.Drawing.Color.FromArgb(rgb[0], rgb[1], rgb[2]), 1);
 
-            forms = new List<Form>();
+            forms = new List<Shape>();
 
             InitializeStates();
             InitializeComponent();
@@ -68,7 +69,7 @@ namespace FormApp
             this.x1 = x1;
             this.y1 = y1;
 
-            formCurrent.Create(x1, y1, colorCurrent, colorCurrent);
+            formCurrent.Create(x1, y1, backgroundColor, backgroundColor);
         }
 
         public void setPointB(int x2, int y2)
@@ -84,7 +85,7 @@ namespace FormApp
             g = pictureBox1.CreateGraphics();
             g.Clear(System.Drawing.Color.White);
 
-            foreach (Form fIn in forms)
+            foreach (Shape fIn in forms)
                 fIn.Draw(g, pen);
 
             formCurrent.Draw(g, pen);
@@ -175,7 +176,15 @@ namespace FormApp
         private void btnColorDialog_Click(object sender, EventArgs e)
         {
             colorDialog.ShowDialog();
-            colorCurrent = new Color(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B);
+            backgroundColor = new Color(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B);
+            this.btnColorDialog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(colorDialog.Color.R)))), ((int)(((byte)(colorDialog.Color.G)))), ((int)(((byte)(colorDialog.Color.B)))));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            colorDialog1.ShowDialog();
+            strokeColor = new Color(colorDialog1.Color.R, colorDialog1.Color.G, colorDialog1.Color.B);
+            this.btnStrokeColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(colorDialog1.Color.R)))), ((int)(((byte)(colorDialog1.Color.G)))), ((int)(((byte)(colorDialog1.Color.B)))));
         }
         
     }

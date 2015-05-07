@@ -1,4 +1,4 @@
-﻿using FormApp.Core.Forms;
+﻿using FormApp.Core.Shapes;
 using FormApp.Core.Utils;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FormApp.Core.Forms
+namespace FormApp.Core.Shapes
 {
     [DataContract]
     public sealed class Triangle : Polygon
@@ -83,7 +83,7 @@ namespace FormApp.Core.Forms
         /***********************************
          *  InitializeForm
          ***********************************/
-        public override Form InitializeForm()
+        public override Shape InitializeForm()
         {
             return new Triangle("triangle");
         }

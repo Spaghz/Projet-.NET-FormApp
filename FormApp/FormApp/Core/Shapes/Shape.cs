@@ -6,33 +6,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
-namespace FormApp.Core.Forms
+namespace FormApp.Core.Shapes
 {
     [DataContract]
-    abstract public class Form
+    abstract public class Shape
     {
         /***********************************
          *  Members
          ***********************************/
-        private Color   _backgroundColor    =   new Color(Color.WHITE),
-                        _edgeColor          =   new Color(Color.BLACK);
+        private Color           _backgroundColor    =   new Color(Color.WHITE),
+                                _edgeColor          =   new Color(Color.BLACK);
 
-        private int     _id=-1;
+        private int             _id=-1;
 
-        private Form    _parent=null;
+        private Shape            _parent=null;
 
-        private int     _edgeSize=1;
+        private int             _edgeSize=1;
 
-        private string  _name;
+        private string          _name;
         /***********************************
          *  Constructor(s)
          ***********************************/
-        protected Form(string nom)
+        protected Shape(string nom)
         {
             _name = nom;
         }
 
-        protected Form(string name,Color backgroundColor,Color edgeColor)
+        protected Shape(string name,Color backgroundColor,Color edgeColor)
         {
             _name = name;
             _backgroundColor = backgroundColor;
@@ -58,7 +58,7 @@ namespace FormApp.Core.Forms
         }
 
         [DataMember]
-        public Form Parent
+        public Shape Parent
         {
             get { return _parent; }
         }
@@ -80,6 +80,11 @@ namespace FormApp.Core.Forms
         {
             get;
         }
+
+        abstract public int Type
+        {
+            get;
+        }
         
         /***********************************
          *  Methods
@@ -92,7 +97,7 @@ namespace FormApp.Core.Forms
 
         public string ToJson()
         {
-            return "\"" + this.Name + "\":" + ToJsonSpecific() + ",\"globalData\":{\"BackgroundColor\":" + BackgroundColor.ToString() + ",\"EdgeColor\":" + EdgeColor.ToString() + ",\"Parent\":" + (Parent == null ? "null" : Parent.ToString()) + ",\"EdgeSize\":" + EdgeSize.ToString() + "}}";
+            return "\"" + this.Name + "\":" + ToJsonSpecific() + ",\"globalData\":{\"Type\":" + this.Type.ToString() + ",\"BackgroundColor\":" + BackgroundColor.ToString() + ",\"EdgeColor\":" + EdgeColor.ToString() + ",\"Parent\":" + (Parent == null ? "null" : Parent.ToString()) + ",\"EdgeSize\":" + EdgeSize.ToString() + "}}";
         }
 
         protected abstract string ToJsonSpecific();
@@ -100,9 +105,9 @@ namespace FormApp.Core.Forms
          *  Operations
          ***********************************/
 
-        public abstract Form Translation(Vector v);
+        public abstract Shape Translation(Vector v);
 
-        public abstract Form Rotation(Point p, float angle_radiant);
+        public abstract Shape Rotation(Point p, float angle_radiant);
 
 
         /***********************************
@@ -123,7 +128,7 @@ namespace FormApp.Core.Forms
         /***********************************
          *  InitializeForm
          ***********************************/
-        public abstract Form InitializeForm();
+        public abstract Shape InitializeForm();
 
         /***********************************
         *  Create Form
