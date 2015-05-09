@@ -87,5 +87,20 @@ namespace FormApp.Core.Shapes
         {
             return new Triangle("triangle");
         }
+
+        /***********************************
+       *  Create Form
+       ***********************************/
+        public override void Create(int x, int y, Color edgeColor, Color backgroundColor)
+        {
+            if (this.Points.Count < 2)
+            {
+                this.SetColors(edgeColor, backgroundColor);
+                this.Points.Add(new Point(x, y));
+                this.Points.Add(new Point(x, y));
+            }
+            else if(this.Points.Count == 2)
+                this.Points.Add(new Point(x, y));
+        }
     }
 }

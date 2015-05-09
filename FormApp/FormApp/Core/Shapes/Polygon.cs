@@ -131,8 +131,8 @@ namespace FormApp.Core.Shapes
             int i = 0;
             foreach(Point pIn in this.Points)
             {
-                listPoints[i] = (System.Drawing.Point) pIn;
-                i++;
+                    listPoints[i] = (System.Drawing.Point)pIn;
+                    i++;
             }
 
             g.DrawPolygon(pen, listPoints);    

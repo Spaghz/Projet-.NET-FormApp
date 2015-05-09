@@ -34,7 +34,8 @@ namespace FormApp
        
         public Form1()
         {
-            backgroundColor = new Color(Color.BLACK);
+            backgroundColor = new Color(Color.WHITE);
+            strokeColor = new Color(Color.BLACK);
             int[] rgb = backgroundColor.intToRgb();
             pen = new System.Drawing.Pen(System.Drawing.Color.FromArgb(rgb[0], rgb[1], rgb[2]), 1);
 
@@ -69,7 +70,7 @@ namespace FormApp
             this.x1 = x1;
             this.y1 = y1;
 
-            formCurrent.Create(x1, y1, backgroundColor, backgroundColor);
+            formCurrent.Create(x1, y1, strokeColor, backgroundColor);
         }
 
         public void setPointB(int x2, int y2)
@@ -93,6 +94,8 @@ namespace FormApp
 
          public void addToList()
          {
+             Console.WriteLine("polygon : ");
+             formCurrent.ToString();
              forms.Add(formCurrent);
              formCurrent = formCurrent.InitializeForm();
          }

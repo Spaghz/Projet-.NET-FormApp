@@ -77,7 +77,7 @@
             // 
             // btnStrokeColor
             // 
-            this.btnStrokeColor.BackColor = System.Drawing.Color.White;
+            this.btnStrokeColor.BackColor = System.Drawing.Color.Black;
             this.btnStrokeColor.ForeColor = System.Drawing.Color.Black;
             this.btnStrokeColor.Location = new System.Drawing.Point(26, 82);
             this.btnStrokeColor.Name = "btnStrokeColor";
@@ -88,7 +88,7 @@
             // 
             // btnColorDialog
             // 
-            this.btnColorDialog.BackColor = System.Drawing.Color.Black;
+            this.btnColorDialog.BackColor = System.Drawing.Color.White;
             this.btnColorDialog.ForeColor = System.Drawing.Color.Black;
             this.btnColorDialog.Location = new System.Drawing.Point(26, 12);
             this.btnColorDialog.Name = "btnColorDialog";
