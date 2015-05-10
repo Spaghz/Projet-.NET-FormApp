@@ -76,6 +76,12 @@ namespace FormApp.Core.Shapes
             set { _name = value ;}
         }
 
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
         abstract public double Area
         {
             get;
@@ -97,7 +103,7 @@ namespace FormApp.Core.Shapes
 
         public string ToJson()
         {
-            return "\"" + this.Name + "\":" + ToJsonSpecific() + ",\"globalData\":{\"Type\":" + this.Type.ToString() + ",\"BackgroundColor\":" + BackgroundColor.ToString() + ",\"EdgeColor\":" + EdgeColor.ToString() + ",\"Parent\":" + (Parent == null ? "null" : Parent.ToString()) + ",\"EdgeSize\":" + EdgeSize.ToString() + "}}";
+            return "\"" + this.Name + "\":" + ToJsonSpecific() + ",\"globalData\":{"+"\"id\":"+Id.ToString()+",\"Type\":" + this.Type.ToString() + ",\"BackgroundColor\":" + BackgroundColor.ToString() + ",\"EdgeColor\":" + EdgeColor.ToString() + ",\"Parent\":" + (Parent == null ? "null" : Parent.ToString()) + ",\"EdgeSize\":" + EdgeSize.ToString() + "}}";
         }
 
         protected abstract string ToJsonSpecific();

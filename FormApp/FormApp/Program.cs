@@ -70,7 +70,7 @@ namespace FormApp
             /*
              * JONATHAN : UPLOAD PHP
              * 
-             *
+             */
             Point A = new Point(0.6, 41);
             Point B = new Point(1, 1);
             Point C = new Point(5.6, -8);
@@ -78,7 +78,7 @@ namespace FormApp
             Triangle T2 = new Triangle("T2", B, A, C);
             string jSon = "{" + T1.ToJson() + "}";
             DAOFormMySQL.Instance.Save(T1);
-             * */
+            
 
 
 
