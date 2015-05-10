@@ -54,6 +54,11 @@ namespace FormApp.Core.Shapes
             get { return _type; }
         }
 
+        public int Count
+        {
+            get { return Points.Count; }
+        }
+
         /***********************************
          *  Methods
          ***********************************/
@@ -104,8 +109,13 @@ namespace FormApp.Core.Shapes
 
         protected override string ToJsonSpecificMore()
         {
-            return "";
-            //return "{\"P1\":{\"X\":" + P1.X + ",\"Y\":" + P1.Y + "},\"P2\":{\"X\":" + P2.X + ",\"Y\":" + P2.X + "},\"P3\":{\"X\":" + P3.X + ",\"Y\":" + P3.X + "}}";
+            String res = "";
+            int i = 1;
+
+            foreach(Point p in this)
+                res += p.ToJson("P" + i++.ToString())+",";
+
+            return res.Substring(0, res.Length - 1);
         }
 
         public override Shape Translation(Vector v)

@@ -12,6 +12,8 @@ namespace FormApp.Core.Shapes
     [DataContract]
     public sealed class Triangle : Polygon
     {
+        private static readonly int _type = 1;
+
         public Triangle(String name)
             :base(name)
         {
@@ -70,6 +72,11 @@ namespace FormApp.Core.Shapes
 
                 return Math.Sqrt(s * (s - a.Length) * (s - b.Length) * (s - c.Length));
             }
+        }
+
+        public override int Type
+        {
+            get { return _type; }
         }
 
         protected override string ToJsonSpecificMore()

@@ -1,35 +1,32 @@
 <?php
-	class LinkRectangle extends HandlerShapesLink
+	class LinkPolygon extends HandlerShapesLink
 	{
 	    public function createShape2()
 	    {
-	    		    	echo("LINKRECTANGLE<br/>");
+	    		    	echo("LINKPOOLYGION<br/>");
 
-	    	if ($this->shapeType==Rectangle::$type)
+	    	if ($this->shapeType==Polygon::$type)
 	    	{
-	    		if (count($this->specificDataArray)!=4)
-	    			throw new Exception("Invalid specific data for Rectangle!");
+	    		if (count($this->specificDataArray)<2)
+	    			throw new Exception("Invalid specific data for Polygon : must contain at least 3 points!");
 
 	    		$points = array();
 
 	    		foreach($this->specificDataArray as $key => $value)
 	    		{
 	    			if (count($value)!=2)
-	    				throw new Exeption("Invalid point array in LinkRectangle : must contain two values 'X' and 'Y'");
+	    				throw new Exeption("Invalid point array in LinkPolygon : must contain two values 'X' and 'Y'");
 
 	    			array_push($points,new Point(array_shift($value),array_shift($value)));
 	    		}
 
-	    		return Rectangle::createRectangle(
+	    		return Polygon::createPolygon(
 	    			$this->name,
 	    			$this->parent,
 	    			$this->edgeSize,
 	    			$this->backgroundColor,
 	    			$this->edgeColor,
-	    			$points[0],
-	    			$points[1],
-	    			$points[2],
-	    			$points[3]
+	    			$points
 	    		);
 	    	}
 	    	else

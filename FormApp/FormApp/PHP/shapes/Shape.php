@@ -1,21 +1,70 @@
 <?php
-	abstract class Shape
+	 abstract class Shape
 	{
-			private $id = -1;
-			private $parent = null;
-			private $edgeSize = 1;
-			private $backgroundColor;// = hexdec("000000");
-			private $edgeColor;// = hexdec("FFFFFF");
-			private $type;
+		protected $id = -1;
+		protected $name;
+		protected $parent;
+		protected $edgeSize;
+		protected $backgroundColor;
+		protected $edgeColor;
 
-			public function __construct($id,$parent,$edgeSize,$backgroundColor,$edgeColor,$type)
-			{
-					$this->id = $id;
-					$this->parent = $parent;
-					$this->edgeSize = $edgeSize;
-					$this->backgroundColor = $backgroundColor;
-					$this->edgeColor = $edgeColor;
-					$this->type = $type;
-			}
+		public function __construct($name,$parent,$edgeSize,$backgroundColor,$edgeColor)
+		{
+			$this->name = $name;
+			$this->parent = $parent;
+			$this->edgeSize = $edgeSize;
+			$this->backgroundColor = $backgroundColor;
+			$this->edgeColor = $edgeColor;
+		}
+
+		public function getId()
+		{
+			return $this->id;
+		}
+
+		public function setId($id)
+		{
+			$this->id = $id;
+		}
+
+		public function getName()
+		{
+			return $this->name;
+		}
+
+		public function setName($name)
+		{
+			$this->name = $name;
+		}
+
+		public function getEdgeSize()
+		{
+			return $this->edgeSize;
+		}
+
+		public function setEdgeSize($edgeSize)
+		{
+			$this->edgeSize = $edgeSize;
+		}
+
+		public function getBackgroundColor()
+		{
+			return $this->backgroundColor;
+		}
+
+		public function setBackgroundColor($backgroundColor)
+		{
+			$this->backgroundColor = $backgroundColor;
+		}
+
+		public function getEdgeColor()
+		{
+			return $this->edgeColor;
+		}
+
+		public function setEdgeColor($edgeColor)
+		{
+			$this->edgeColor = $edgeColor;
+		}				
 	}
 ?>

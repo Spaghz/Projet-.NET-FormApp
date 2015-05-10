@@ -17,4 +17,11 @@
 		// Decoding byte array
 		return $jsonFormBytes;
 	}
+
+	function echoArray($array)
+	{
+		echo("<pre>");
+		print_r($array);
+		echo("</pre>");
+	}
 ?>

@@ -47,6 +47,14 @@ namespace FormApp.Core.Utils
             return "(" + X + ";" + Y + ")";
         }
 
+        public string ToJson(string pointName)
+        {
+            if (pointName.Length == 0)
+                throw new ArgumentException("Point name musn't be empty when exporting it into jSon : please specify a name for that point.");
+
+            return "\"" + pointName.ToString() + "\":{\"X\":" + X.ToString().Replace(',','.') + ",\"Y\":" + Y.ToString().Replace(',','.') + "}";
+        }
+
         /***********************************
          *  Operators overload
          ***********************************/
