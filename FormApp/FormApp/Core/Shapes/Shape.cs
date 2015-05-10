@@ -103,7 +103,7 @@ namespace FormApp.Core.Shapes
 
         public string ToJson()
         {
-            return "\"" + this.Name + "\":" + ToJsonSpecific() + ",\"globalData\":{"+"\"id\":"+Id.ToString()+",\"Type\":" + this.Type.ToString() + ",\"BackgroundColor\":" + BackgroundColor.ToString() + ",\"EdgeColor\":" + EdgeColor.ToString() + ",\"Parent\":" + (Parent == null ? "null" : Parent.ToString()) + ",\"EdgeSize\":" + EdgeSize.ToString() + "}}";
+            return "\"" + this.Name + "\":" + ToJsonSpecific() + ",\"globalData\":{"+"\"Id\":"+Id.ToString()+",\"Type\":" + this.Type.ToString() + ",\"BackgroundColor\":" + BackgroundColor.ToString() + ",\"EdgeColor\":" + EdgeColor.ToString() + ",\"Parent\":" + (Parent == null ? "null" : Parent.ToString()) + ",\"EdgeSize\":" + EdgeSize.ToString() + "}}";
         }
 
         protected abstract string ToJsonSpecific();
