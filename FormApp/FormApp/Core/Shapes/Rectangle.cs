@@ -15,29 +15,27 @@ namespace FormApp.Core.Shapes
         public Rectangle(string name)
             : base(name)
         {
-            this.AddPoint(null);
-            this.AddPoint(null);
-            this.AddPoint(null);
-            this.AddPoint(null);
+           
         }
 
         public Rectangle(string name, Point p1, Point p2, Point p3, Point p4)
             : base(name)
         {
 
-            this.AddPoint(p1);
-            this.AddPoint(p2);
-            this.AddPoint(p3);
-            this.AddPoint(p4);
+            this.Points[0] = p1;
+            this.Points[1] = p2;
+            this.Points[2] = p3;
+            this.Points[3] = p4;
+          
         }
 
         public Rectangle(string name, Color backgroundColor, Color edgeColor, Point p1, Point p2, Point p3, Point p4)
             : base(name, backgroundColor, edgeColor)
         {
-            this.AddPoint(p1);
-            this.AddPoint(p2);
-            this.AddPoint(p3);
-            this.AddPoint(p4);
+            this.Points[0] = p1;
+            this.Points[1] = p2;
+            this.Points[2] = p3;
+            this.Points[3] = p4;
         }
 
         public Point P1
@@ -69,7 +67,8 @@ namespace FormApp.Core.Shapes
             get { return _type; }
         }
 
-        public override double Area
+    // Aire d'un polygone = aire d'un rectangle
+    /*    public override double Area
         {
             get
             {
@@ -79,7 +78,7 @@ namespace FormApp.Core.Shapes
                 return (a.Length * b.Length);
             }
         }
-
+        */
         protected override string ToJsonSpecificMore()
         {
             return "\"P1\":{\"X\":" + P1.X.ToString().Replace(',', '.') + ",\"Y\":" + P1.Y.ToString().Replace(',', '.')
@@ -153,6 +152,22 @@ namespace FormApp.Core.Shapes
         {
             this.SetColors(edgeColor, backgroundColor);
         }
+
+
+
+        /***********************************
+        *  ToString
+        ***********************************/
+        public override string ToString()
+        {
+            String s = "Rectangle : \n";
+            s += base.ToString();
+            return s;  
+        }
+
+      
+        
+
     }
 }
 

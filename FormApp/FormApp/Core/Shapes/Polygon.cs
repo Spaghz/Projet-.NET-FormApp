@@ -15,6 +15,7 @@ namespace FormApp.Core.Shapes
          ***********************************/
         private List<Point> _points;
         private readonly static int _type = 4;
+        bool convexe = true;
 
         /***********************************
          *  Constructor(s)
@@ -38,10 +39,30 @@ namespace FormApp.Core.Shapes
          *  Properties
          ***********************************/
 
+
         public override double Area
         {
-            get { throw new NotImplementedException(); }
+                get { return calculatePolygonArea(Points); }
         }
+
+        private double calculatePolygonArea(List<Point> points)
+        {
+
+            double area = 0.0;
+
+            for (int i = 0, j = Count-1; i < Count; i++)
+            {
+                area += (points[j].X + points[i].X) * (points[j].Y - points[i].Y);
+                j = i;
+            }
+
+            if (area < 0)
+                return -area / 2;
+            else
+                return area / 2;
+        }
+
+
 
         public List<Point> Points
         {
@@ -59,6 +80,12 @@ namespace FormApp.Core.Shapes
             get { return Points.Count; }
         }
 
+
+        public bool isConvexe
+        {
+            get { return this.convexe; }
+        }
+
         /***********************************
          *  Methods
          ***********************************/
@@ -73,9 +100,9 @@ namespace FormApp.Core.Shapes
 
         public override string ToString()
         {
-            String s = "Polygon : \n";
+            String s = "P";
             foreach (Point p in this)
-                s += p.ToString() + "\n";
+                s += "    " + p.ToString() + "\n";
 
             return s;
         }
@@ -117,17 +144,6 @@ namespace FormApp.Core.Shapes
 
             return res.Substring(0, res.Length - 1);
         }
-
-        public override Shape Translation(Vector v)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Shape Rotation(Point p, float angle_radiant)
-        {
-            throw new NotImplementedException();
-        }
-
 
         /***********************************
          *  Draw
@@ -180,5 +196,50 @@ namespace FormApp.Core.Shapes
             else
                 this.Points.Add(new Point(x, y));
         }
+
+
+
+
+
+        /***********************************
+        *  Transformation
+       ***********************************/
+        public override void Translation(Vector v)
+        {
+            for(int i=0; i<Count; i++)
+                Points[i] = v.translation(Points[i]);
+        }
+
+
+        public override void Homotethie(double rapport)
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                Points[i].X *= rapport;
+                Points[i].Y *= rapport;
+            }
+        }
+
+        
+        public override void Rotation(Point point, float angle)
+        {//Invariant rotation
+
+            Point invariantPoint = new Point(point);
+
+            foreach (Point p in Points) //Looking for invariant point of the polygon
+                if(point == p)
+                    invariantPoint = p;
+
+            if (invariantPoint.X == null) //the invariant point does not belong to the polygon
+	           System.Console.WriteLine("Choose a point belonging to the polygon");
+
+            for (int i = 0; i < Count; i++)
+            {
+                Points[i].X = (Points[i].X - invariantPoint.X) * Math.Cos(angle) - (Points[i].Y - invariantPoint.Y) * Math.Sin(angle) + invariantPoint.X;
+                Points[i].Y = (Points[i].X - invariantPoint.X) * Math.Sin(angle) + (Points[i].Y - invariantPoint.Y) * Math.Cos(angle) + invariantPoint.Y; 
+            }   
+        }
+
+
     }
 }

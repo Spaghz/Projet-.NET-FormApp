@@ -187,22 +187,61 @@ namespace FormApp.Core.Shapes
 
 
         /***********************************
-        *  Operations
+        *  Transformations
         ***********************************/
 
 
-        public override Shape Translation(Vector v)
+        public override void Translation(Vector v)
         {
-            Circle c = new Circle(this);
-            c.Center = v.translation(c.Center);
-            
-
-            return c;
+            this.Center = v.translation(this.Center);   
         }
 
-        public override Shape Rotation(Point p, float angle_radiant)
+        public List<Point> Discrectisation(int precision)
         {
-            throw new NotImplementedException();
+            double x, y;
+            List<Point> discretised_circle = new List<Point>();
+
+            for (int i = 1; i <= precision; i++)
+            {
+                x = Radius * Math.Cos((2 * Math.PI) / precision * i) + Center.X;
+                y = Radius * Math.Sin((2 * Math.PI) / precision * i) + Center.Y;
+
+                Point p = new Point(x, y);
+                discretised_circle.Add(p);
+
+            }
+
+            return discretised_circle;
+        }
+
+        public override void Homotethie(double rapport)
+        {
+            Radius *= rapport;
+        }
+
+        public override void Rotation(Point point, float angle)
+        {//Invariant rotation
+
+            Point invariantPoint = new Point(point);
+	        List<Point> circlePoints = this.Discrectisation(30);
+
+            foreach (Point p in circlePoints) //Looking for invariant point of the polygon
+                if (point == p)
+                    invariantPoint = p;
+
+         //   if (invariantPoint) //the invariant point does not belong to the polygon
+         //       System.Console.WriteLine("Choose a point belonging to the polygon");
+
+
+            Point new_point = new Point(Center);
+            
+            new_point.X = (Center.X - invariantPoint.X) * Math.Cos(angle) - (Center.Y - invariantPoint.Y) * Math.Sin(angle) + invariantPoint.X;
+            new_point.Y = (Center.X - invariantPoint.X) * Math.Sin(angle) + (Center.Y - invariantPoint.Y) * Math.Cos(angle) + invariantPoint.Y;
+
+            Center = invariantPoint;
+            RandomEdgePoint = new_point;
+          
+            //return new Circle(Name,new_center,Radius);
         }
 
 
@@ -255,5 +294,19 @@ namespace FormApp.Core.Shapes
         {
             this.SetColors(edgeColor, backgroundColor);
         }
+
+
+        /***********************************
+        *  ToString
+        ***********************************/
+        public override string ToString()
+        {
+            String s = "Cercle : \n";
+            s += "{ " + Center.ToString() + Radius + " }";
+            return s;
+        }
+
+
+
     }
 }

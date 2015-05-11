@@ -22,17 +22,19 @@ namespace FormApp.Core.Shapes
         public Triangle(string name, Point p1, Point p2,Point p3)
             : base(name)
         {
-            this.AddPoint(p1);
-            this.AddPoint(p2);
-            this.AddPoint(p3);
+            this.Points[0] = p1;
+            this.Points[1] = p2;
+            this.Points[2] = p3;
+           
         }
 
         public Triangle(string name, Color backgroundColor,Color edgeColor, Point p1, Point p2, Point p3)
             : base(name, backgroundColor,edgeColor)
         {
-            this.AddPoint(p1);
-            this.AddPoint(p2);
-            this.AddPoint(p3);
+            this.Points[0] = p1;
+            this.Points[1] = p2;
+            this.Points[2] = p3;
+            
         }
 
         public Point P1
@@ -109,5 +111,17 @@ namespace FormApp.Core.Shapes
             else if(this.Points.Count == 2)
                 this.Points.Add(new Point(x, y));
         }
+
+
+        /***********************************
+        *  ToString
+        ***********************************/
+        public override string ToString()
+        {
+            String s = "Triangle : \n";
+            s += base.ToString();
+            return s;
+        }
+
     }
 }

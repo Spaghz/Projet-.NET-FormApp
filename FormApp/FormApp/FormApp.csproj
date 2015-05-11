@@ -60,6 +60,7 @@
     <Compile Include="Core\Utils\Color.cs" />
     <Compile Include="Core\Utils\Point.cs" />
     <Compile Include="Core\Utils\StringUtils.cs" />
+    <Compile Include="Core\Utils\Triangulation.cs" />
     <Compile Include="Core\Utils\Vector.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

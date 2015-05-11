@@ -94,8 +94,7 @@ namespace FormApp
 
          public void addToList()
          {
-             Console.WriteLine("polygon : ");
-             formCurrent.ToString();
+             Console.WriteLine(formCurrent.ToString());
              forms.Add(formCurrent);
              formCurrent = formCurrent.InitializeForm();
          }

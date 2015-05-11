@@ -108,13 +108,14 @@ namespace FormApp.Core.Shapes
 
         protected abstract string ToJsonSpecific();
         /***********************************
-         *  Operations
+         *  Transformations
          ***********************************/
 
-        public abstract Shape Translation(Vector v);
+        abstract public void Homotethie(double rapport);
 
-        public abstract Shape Rotation(Point p, float angle_radiant);
+        abstract public void Translation(Vector v);
 
+        abstract public void Rotation(Point p, float angle_radiant);
 
         /***********************************
          *  Draw

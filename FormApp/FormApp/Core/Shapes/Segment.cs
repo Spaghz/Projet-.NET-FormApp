@@ -101,15 +101,47 @@ namespace FormApp.Core.Shapes
                  + "}";
        }
 
-        public override Shape Translation(Vector v)
+
+
+       /***********************************
+       *  Draw
+       ***********************************/
+
+       public override void Translation(Vector v)
+       {
+          P1 = v.translation(P1);
+          P2 = v.translation(P2);
+       }
+
+
+        public override void Homotethie(double rapport)
         {
-            throw new NotImplementedException();
+           P1.X *= rapport;
+           P1.Y *= rapport;
+
+           P2.X *= rapport;
+           P2.Y *= rapport;
         }
 
-        public override Shape Rotation(Point p, float angle_radiant)
+       
+        public override void Rotation(Point p, float angle_radiant)
         {
-            throw new NotImplementedException();
+            if(p == P1) //P1 is invariant, P2 will be modified
+            {
+                P2.X = ((P2.X-P1.X)*Math.Cos(angle_radiant)) - ((P2.Y-P1.Y)*Math.Sin(angle_radiant) + P1.X);
+                P2.Y = ((P2.X-P1.X)*Math.Sin(angle_radiant)) + ((P2.Y-P1.Y)*Math.Cos(angle_radiant) + P1.Y);
+            }
+            else if(p == P2) //P2 is invariant, P1 will be modified
+            {
+                P1.X = ((P1.X-P2.X)*Math.Cos(angle_radiant)) - ((P1.Y-P2.Y)*Math.Sin(angle_radiant) + P2.X);
+                P1.Y = ((P1.X-P2.X)*Math.Sin(angle_radiant)) + ((P1.Y-P2.Y)*Math.Cos(angle_radiant) + P2.Y);
+            }
+            else
+            {
+                System.Console.WriteLine("Choose a segment point !");
+            }
         }
+
 
 
         /***********************************
@@ -149,5 +181,18 @@ namespace FormApp.Core.Shapes
             this.SetColors(edgeColor, backgroundColor);
             _p1 = new Point(x, y);
         }
+
+
+
+        /***********************************
+       *  ToString
+       ***********************************/
+        public override string ToString()
+        {
+            String s = "Segment : \n";
+            s += P1.ToString() + "\n" + P2.ToString();
+            return s;
+        }
+
     }
 }

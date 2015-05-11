@@ -112,19 +112,26 @@ namespace FormApp.Core.Shapes
 
 
         /***********************************
-        * Functions
+        * Transformations
         ***********************************/
 
-        public override Shape Translation(Vector v)
+        public override void Translation(Vector v)
         {
-            throw new NotImplementedException();
+            foreach (Shape s in _forms)
+                s.Translation(v);
         }
 
-        public override Shape Rotation(Point p, float angle_radiant)
+        public override void Rotation(Point p, float angle_radiant)
         {
-            throw new NotImplementedException();
+            foreach (Shape s in _forms)
+                s.Rotation(p, angle_radiant);
         }
 
+        public override void Homotethie(double rapport)
+        {
+            foreach (Shape s in _forms)
+                s.Homotethie(rapport);
+        }
 
         /***********************************
          *  Draw

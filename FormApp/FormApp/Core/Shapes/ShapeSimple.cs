@@ -38,15 +38,20 @@ namespace FormApp.Core.Shapes
             get;
         }
 
-        public override Shape Translation(Vector v)
-        {
-            throw new NotImplementedException();
-        }
+       
+        /***********************************
+        *  Transformations
+        ***********************************/
 
-        public override Shape Rotation(Point p, float angle_radiant)
-        {
-            throw new NotImplementedException();
-        }
+        abstract public override void Homotethie(double rapport);
+
+        abstract public override void Translation(Vector v);
+
+        abstract public override void Rotation(Point p, float angle_radiant);
+
+        /***********************************
+         *  Drawing
+         ***********************************/
 
         public override void Draw(System.Drawing.Graphics g, System.Drawing.Pen pen)
         {
@@ -67,5 +72,10 @@ namespace FormApp.Core.Shapes
         {
             throw new NotImplementedException();
         }
+
+
+        abstract override public string ToString();
+
+
     }
 }
