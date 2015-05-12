@@ -100,7 +100,7 @@ namespace FormApp.Core.Shapes
 
         public override string ToString()
         {
-            String s = "P";
+            String s = "";
             foreach (Point p in this)
                 s += "    " + p.ToString() + "\n";
 
@@ -204,42 +204,42 @@ namespace FormApp.Core.Shapes
         /***********************************
         *  Transformation
        ***********************************/
-        public override void Translation(Vector v)
+        public override Shape Translation(Vector v)
         {
+            //Eventuellement, à moins de rendre Point Iterable ???
+            //foreach (Point p in Points)
+            //    p = p.Translation(v);
+
+           // On ne peut pas utiliser foreach ici, car nous avons besoin de modifier la valeur des Points de la liste
             for(int i=0; i<Count; i++)
-                Points[i] = v.translation(Points[i]);
+                Points[i].Translation(v);
+          
+            return this;
         }
 
 
-        public override void Homotethie(double rapport)
+
+        public override Shape Homothetie(double rapport)
+        {
+            return Homothetie(new Point(0.0, 0.0), rapport);
+        }
+
+
+        public override Shape Homothetie(Point p, double rapport)
         {
             for (int i = 0; i < Count; i++)
-            {
-                Points[i].X *= rapport;
-                Points[i].Y *= rapport;
-            }
+                Points[i].Homothetie(p,rapport);
+
+            return this;
         }
 
-        
-        public override void Rotation(Point point, float angle)
-        {//Invariant rotation
 
-            Point invariantPoint = new Point(point);
-
-            foreach (Point p in Points) //Looking for invariant point of the polygon
-                if(point == p)
-                    invariantPoint = p;
-
-            if (invariantPoint.X == null) //the invariant point does not belong to the polygon
-	           System.Console.WriteLine("Choose a point belonging to the polygon");
-
+        public override Shape Rotation(Point point, double angle)
+        {
             for (int i = 0; i < Count; i++)
-            {
-                Points[i].X = (Points[i].X - invariantPoint.X) * Math.Cos(angle) - (Points[i].Y - invariantPoint.Y) * Math.Sin(angle) + invariantPoint.X;
-                Points[i].Y = (Points[i].X - invariantPoint.X) * Math.Sin(angle) + (Points[i].Y - invariantPoint.Y) * Math.Cos(angle) + invariantPoint.Y; 
-            }   
+                Points[i].Rotation(point, angle);
+
+            return this;
         }
-
-
     }
 }

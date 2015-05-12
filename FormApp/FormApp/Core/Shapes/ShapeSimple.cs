@@ -43,11 +43,13 @@ namespace FormApp.Core.Shapes
         *  Transformations
         ***********************************/
 
-        abstract public override void Homotethie(double rapport);
+        abstract public override Shape Homothetie(Point p, double rapport);
 
-        abstract public override void Translation(Vector v);
+        abstract public override Shape Homothetie(double rapport);
 
-        abstract public override void Rotation(Point p, float angle_radiant);
+        abstract public override Shape Translation(Vector v);
+
+        abstract public override Shape Rotation(Point p, double angle_radiant);
 
         /***********************************
          *  Drawing

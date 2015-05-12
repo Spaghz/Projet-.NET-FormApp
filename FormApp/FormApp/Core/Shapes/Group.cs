@@ -57,6 +57,11 @@ namespace FormApp.Core.Shapes
             get { return _type; }
         }
 
+        public int Count
+        {
+            get { return _forms.Count; }
+        }
+
         /***********************************
          *  Public methods
          ***********************************/
@@ -115,23 +120,57 @@ namespace FormApp.Core.Shapes
         * Transformations
         ***********************************/
 
-        public override void Translation(Vector v)
+        public override Shape Translation(Vector v)
         {
-            foreach (Shape s in _forms)
-                s.Translation(v);
+            for(int i=0; i< Count; i++)
+              _forms[i] = _forms[i].Translation(v);
+            
+            return this;
+
+
+            /*foreach (Shape s in this)
+                s = s.Translation(v);
+           
+              return this;
+            */
+
         }
 
-        public override void Rotation(Point p, float angle_radiant)
-        {
-            foreach (Shape s in _forms)
-                s.Rotation(p, angle_radiant);
+        public override Shape Rotation(Point p, double angle_radiant)
+        { 
+            /*foreach (Shape s in this)
+                s = s.Rotation(p, angle_radiant);
+
+            return this;*/
+
+            for (int i = 0; i < Count; i++)
+                _forms[i] = _forms[i].Rotation(p,angle_radiant);
+
+            return this;
+
         }
 
-        public override void Homotethie(double rapport)
+
+        public override Shape Homothetie(Point p, double rapport)
         {
-            foreach (Shape s in _forms)
-                s.Homotethie(rapport);
+           /* foreach (Shape s in this)
+                s.Homothetie(p, rapport);
+            return this;*/
+
+            for (int i = 0; i < Count; i++)
+                _forms[i] = _forms[i].Homothetie(p,rapport);
+
+            return this;
         }
+
+
+        public override Shape Homothetie(double rapport)
+        {
+            return Homothetie(new Point(0.0, 0.0), rapport);
+        }
+
+      
+
 
         /***********************************
          *  Draw

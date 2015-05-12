@@ -18,26 +18,39 @@ namespace FormApp.Core.Shapes
            
         }
 
-        public Rectangle(string name, Point p1, Point p2, Point p3, Point p4)
+
+        public Rectangle(string name, Point p1, Point p2)
             : base(name)
         {
-
-            this.Points[0] = p1;
-            this.Points[1] = p2;
-            this.Points[2] = p3;
-            this.Points[3] = p4;
           
+            if (p1.X == p2.X || p1.Y == p2.Y)
+                throw new ArgumentException("X or Y parameters are equals, try another second point");
+            else
+            {
+                this.AddPoint(p1);
+                this.AddPoint(p2);
+
+                this.AddPoint(new Point(p2.X, p1.Y));
+                this.AddPoint(new Point(p1.X, p2.Y));
+            }
         }
 
-        public Rectangle(string name, Color backgroundColor, Color edgeColor, Point p1, Point p2, Point p3, Point p4)
+       
+
+        public Rectangle(string name, Color backgroundColor, Color edgeColor, Point p1, Point p2)
             : base(name, backgroundColor, edgeColor)
         {
-            this.Points[0] = p1;
-            this.Points[1] = p2;
-            this.Points[2] = p3;
-            this.Points[3] = p4;
-        }
+            if (p1.X == p2.X || p1.Y == p2.Y)
+                throw new ArgumentException("X or Y parameters are equals, try another second point");
+            else
+            {
+                this.AddPoint(p1);
+                this.AddPoint(p2);
 
+                this.AddPoint(new Point(p2.X, p1.Y));
+                this.AddPoint(new Point(p1.X, p2.Y));
+            }
+        }
         public Point P1
         {
             get { return this.Points[0]; }

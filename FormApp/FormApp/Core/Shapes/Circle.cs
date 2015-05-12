@@ -14,7 +14,7 @@ namespace FormApp.Core.Shapes
          ***********************************/
 
         private Point   _center;
-        private Point   _randomEdgePoint;
+        private Point   _distantEdgePoint;
         private double  _radius;
         private static readonly int _type = 6;
 
@@ -27,7 +27,7 @@ namespace FormApp.Core.Shapes
         {
             _radius = 0.0;
             _center = null;
-            _randomEdgePoint = null;
+            _distantEdgePoint = null;
         }
 
         public Circle(string nom, Point center,double radius) : base(nom)
@@ -37,17 +37,29 @@ namespace FormApp.Core.Shapes
             checkParameters(center, tmp, radius);
 
             _center = center;
-            _randomEdgePoint = tmp; 
+            _distantEdgePoint = tmp; 
             _radius = radius;
         }
 
-        public Circle(string nom, Point center, Point randomEdgePoint)
+        public Circle(string nom, Point center, Point distantEdgePoint)
             : base(nom)
         {
             _center = center;
-            _randomEdgePoint = randomEdgePoint;
-            _radius = new Vector(center, randomEdgePoint).Length;
-            checkParameters(center, randomEdgePoint, _radius);
+            _distantEdgePoint = distantEdgePoint;
+            _radius = new Vector(center, distantEdgePoint).Length;
+            checkParameters(center, distantEdgePoint, _radius);
+
+        }
+
+
+
+        public Circle(string nom, Circle c)
+            : base(nom)
+        {
+            _center = c.Center;
+            _distantEdgePoint = c.DistantEdgePoint;
+            _radius = new Vector(c.Center, c.DistantEdgePoint).Length;
+            checkParameters(c.Center, c.DistantEdgePoint, _radius);
 
         }
 
@@ -56,12 +68,12 @@ namespace FormApp.Core.Shapes
         public Circle(string nom, Color backgroundColor,Color edgeColor,Point center,double radius) : base(nom, backgroundColor,edgeColor)
         {
 
-            Point tmp_randomEdgePoint = new Point(center.X + radius, center.Y);
-            checkParameters(center, tmp_randomEdgePoint, radius);
+            Point tmp_distantEdgePoint = new Point(center.X + radius, center.Y);
+            checkParameters(center, tmp_distantEdgePoint, radius);
 
 
             _center = center;
-            _randomEdgePoint = tmp_randomEdgePoint;
+            _distantEdgePoint = tmp_distantEdgePoint;
             _radius = radius;
 
         }
@@ -70,7 +82,7 @@ namespace FormApp.Core.Shapes
             : base(c.Name)
         {
             _center = c.Center;
-            _randomEdgePoint = c.RandomEdgePoint;
+            _distantEdgePoint = c.DistantEdgePoint;
             _radius = c.Radius;
 
         }
@@ -87,10 +99,10 @@ namespace FormApp.Core.Shapes
             set { _center = value; }
         }
 
-        public Point RandomEdgePoint
+        public Point DistantEdgePoint
         {
-            get { return _randomEdgePoint; }
-            set { _randomEdgePoint = value; }
+            get { return _distantEdgePoint; }
+            set { _distantEdgePoint = value; }
         }
 
         public double Radius
@@ -148,10 +160,10 @@ namespace FormApp.Core.Shapes
          *  Check methods
          ***********************************/
 
-        private static void checkParameters(Point center, Point randomEdgePoint, double radius)
+        private static void checkParameters(Point center, Point distantEdgePoint, double radius)
         {
             checkCenter(center);
-            checkRandomPointEdgePoint(randomEdgePoint);
+            checkDistantPointEdgePoint(distantEdgePoint);
             checkRadius(radius);
         }
 
@@ -168,9 +180,9 @@ namespace FormApp.Core.Shapes
                 throw new ArgumentNullException();
         }
 
-        private static void checkRandomPointEdgePoint(Point randomEdgePoint)
+        private static void checkDistantPointEdgePoint(Point distantEdgePoint)
         {
-            if (randomEdgePoint == null)
+            if (distantEdgePoint == null)
                 throw new ArgumentNullException();
         }
 
@@ -185,16 +197,6 @@ namespace FormApp.Core.Shapes
              + "},\"Radius\":" + Radius.ToString().Replace(',', '.');
         }
 
-
-        /***********************************
-        *  Transformations
-        ***********************************/
-
-
-        public override void Translation(Vector v)
-        {
-            this.Center = v.translation(this.Center);   
-        }
 
         public List<Point> Discrectisation(int precision)
         {
@@ -214,34 +216,43 @@ namespace FormApp.Core.Shapes
             return discretised_circle;
         }
 
-        public override void Homotethie(double rapport)
+
+        /***********************************
+        *  Transformations
+        ***********************************/
+
+
+        public override Shape Translation(Vector v)
         {
-            Radius *= rapport;
+            Center = Center.Translation(v);
+            DistantEdgePoint = DistantEdgePoint.Translation(v);
+
+            return this;
         }
 
-        public override void Rotation(Point point, float angle)
-        {//Invariant rotation
 
-            Point invariantPoint = new Point(point);
-	        List<Point> circlePoints = this.Discrectisation(30);
+        public override Shape Homothetie(Point p, double rapport)
+        {
+            Center = Center.Homothetie(p, rapport);
+            DistantEdgePoint = DistantEdgePoint.Homothetie(p, rapport);
+            Radius *= rapport;
 
-            foreach (Point p in circlePoints) //Looking for invariant point of the polygon
-                if (point == p)
-                    invariantPoint = p;
-
-         //   if (invariantPoint) //the invariant point does not belong to the polygon
-         //       System.Console.WriteLine("Choose a point belonging to the polygon");
+            return this;
+        }
 
 
-            Point new_point = new Point(Center);
-            
-            new_point.X = (Center.X - invariantPoint.X) * Math.Cos(angle) - (Center.Y - invariantPoint.Y) * Math.Sin(angle) + invariantPoint.X;
-            new_point.Y = (Center.X - invariantPoint.X) * Math.Sin(angle) + (Center.Y - invariantPoint.Y) * Math.Cos(angle) + invariantPoint.Y;
+        public override Shape Homothetie(double rapport)
+        {
+            return Homothetie(new Point(0.0, 0.0), rapport);
+        }
 
-            Center = invariantPoint;
-            RandomEdgePoint = new_point;
-          
-            //return new Circle(Name,new_center,Radius);
+
+        public override Shape Rotation(Point point, double angle)
+        {
+            Center = Center.Rotation(point, angle);
+            DistantEdgePoint = DistantEdgePoint.Rotation(point, angle);
+
+            return this;
         }
 
 
@@ -274,7 +285,7 @@ namespace FormApp.Core.Shapes
         {
             this.Radius = (Math.Abs(x1 - x2) / 2.0);
             this.Center = new Point(Math.Min(x1, x2) + this.Radius, Math.Min(y1, y2) + this.Radius);
-            this._randomEdgePoint = new Point(Center.X + Radius, Center.Y);
+            this._distantEdgePoint = new Point(Center.X + Radius, Center.Y);
         }
 
 
@@ -302,7 +313,7 @@ namespace FormApp.Core.Shapes
         public override string ToString()
         {
             String s = "Cercle : \n";
-            s += "{ " + Center.ToString() + Radius + " }";
+            s += "{ Center " + Name + ": " + Center.ToString() + " ; Radius : " + Radius + " }";
             return s;
         }
 

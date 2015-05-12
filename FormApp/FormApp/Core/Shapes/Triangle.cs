@@ -22,18 +22,18 @@ namespace FormApp.Core.Shapes
         public Triangle(string name, Point p1, Point p2,Point p3)
             : base(name)
         {
-            this.Points[0] = p1;
-            this.Points[1] = p2;
-            this.Points[2] = p3;
+            this.AddPoint(p1);
+            this.AddPoint(p2);
+            this.AddPoint(p3);
            
         }
 
         public Triangle(string name, Color backgroundColor,Color edgeColor, Point p1, Point p2, Point p3)
             : base(name, backgroundColor,edgeColor)
         {
-            this.Points[0] = p1;
-            this.Points[1] = p2;
-            this.Points[2] = p3;
+            this.AddPoint(p1);
+            this.AddPoint(p2);
+            this.AddPoint(p3);
             
         }
 

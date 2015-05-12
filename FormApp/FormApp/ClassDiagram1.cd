@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="FormApp.Core.Utils.Point" Collapsed="true">
-    <Position X="0.75" Y="0.5" Width="1.5" />
+    <Position X="2" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAIAAQAAAAEwAAAAAAAAIAAAIAAIAAAAAAAYiA=</HashCode>
+      <HashCode>AAAAAAAIAAQAAIAGwAAQAAAAAIAAAIAAIAAAAAAAYiA=</HashCode>
       <FileName>Core\Utils\Point.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -18,7 +18,7 @@
   <Class Name="FormApp.Core.Shapes.ShapeSimple" Collapsed="true">
     <Position X="5.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAoAGAAAgAAgAQIAAAEAAAQgAAQAACAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAoAGAAAwAAgAQAAAAEAAAQgAAQAACAA=</HashCode>
       <FileName>Core\Shapes\ShapeSimple.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -32,7 +32,7 @@
   <Class Name="FormApp.Core.Shapes.Segment" Collapsed="true">
     <Position X="5.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAgAAAAAAAAAoQGAAAgCQhAAACAAEAAAQAAAQAACAA=</HashCode>
+      <HashCode>CAAgAAAAAAAAAoQGAAAgCQhAAICAAEAAAQAAAQAACAA=</HashCode>
       <FileName>Core\Shapes\Segment.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -46,14 +46,14 @@
   <Class Name="FormApp.Core.Shapes.Circle" Collapsed="true">
     <Position X="7.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAIAACAAAAAAoQGgIAgCgoAAAAAAMAOAQAAAQEICiA=</HashCode>
+      <HashCode>CEAIAACAAAAAAoQGgIAgCgoAIIAAAMAEAQAAAQEICiA=</HashCode>
       <FileName>Core\Shapes\Circle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FormApp.Core.Shapes.Group" Collapsed="true">
     <Position X="10.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAApQCAAAAAAgEQAAAAEAEAQgAAQAIDAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAApQCAAAQAAgEQAAAAEAEAQgAAQAIDAA=</HashCode>
       <FileName>Core\Shapes\Group.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -61,7 +61,7 @@
   <Class Name="FormApp.Core.Shapes.Shape" Collapsed="true">
     <Position X="7.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABCIAAAAAAAAoICAABAQAwQSoAAAEAAISgAAQAADAA=</HashCode>
+      <HashCode>AABCIAAAAAAAAoICAABQQAwQSgAAAEAAISgAAQAADAA=</HashCode>
       <FileName>Core\Shapes\Shape.cs</FileName>
     </TypeIdentifier>
   </Class>

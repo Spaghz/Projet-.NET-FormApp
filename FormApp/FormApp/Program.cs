@@ -96,9 +96,9 @@ namespace FormApp
              * LOREDANE : GUI
              * 
              */
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+           // Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new Form1());
 
 
 
@@ -135,7 +135,19 @@ namespace FormApp
             R1.AddPoint(D);
 
 
-            System.Console.WriteLine(P1.Area);
+            Circle C1 = new Circle("C1", new Point(2.0, 2.0), 1);
+            System.Console.WriteLine(C1);
+
+            Circle C2 = new Circle("C2", new Point(2.0,2.0),1);
+            
+            System.Console.WriteLine(C1.Translation(new Vector(1, 1)));
+            System.Console.WriteLine(C1.Homothetie(2.0));
+            System.Console.WriteLine(C2.Homothetie(new Point(1.0, 1.0), 2.0));
+
+
+            System.Console.WriteLine(new Triangle("T1", new Point(-2.0, 0.0), new Point(0.0, 2.0), new Point(1.0, 0.0)).Homothetie(2.0));
+
+
             System.Console.WriteLine(R1.Area);
             System.Console.ReadLine();
         }

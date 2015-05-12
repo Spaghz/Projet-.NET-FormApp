@@ -112,5 +112,38 @@ namespace FormApp.Core.Utils
         {
             return new System.Drawing.Point((int)point.X, (int)point.Y);
         }
+
+
+
+        /***********************************
+        *  Transformation
+        ***********************************/
+
+        public Point Homothetie(Point p, double rapport)
+        {
+            X = X*rapport - p.X;
+            Y = Y*rapport - p.Y;
+
+            return this;
+        }
+
+        public Point Homothetie(double rapport)
+        {
+            return Homothetie(new Point(0.0, 0.0), rapport);
+        }
+
+
+        public Point Translation(Vector v)
+        {
+            return v.translation(this);
+        }
+
+        public Point Rotation(Point p, double angle_radiant)
+        {
+            X = (X - p.X) * Math.Cos(angle_radiant) - (Y - p.Y) * Math.Sin(angle_radiant) + p.X;
+            Y = (Y - p.X) * Math.Sin(angle_radiant) + (Y - p.Y) * Math.Cos(angle_radiant) + p.Y;
+
+            return this;
+        }
     }
 }
