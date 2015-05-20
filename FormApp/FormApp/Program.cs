@@ -17,7 +17,7 @@ namespace FormApp
     {
         static void Main(string[] args)
         {
-           /* Point A = new Point(0.6, 41);
+           Point A = new Point(0.6, 41);
             Point B = new Point(1, 1);
             Point C = new Point(5.6, -8);
             Triangle T1 = new Triangle("T1",A,B,C);
@@ -30,13 +30,15 @@ namespace FormApp
             Point rectC = new Point(1,0);
             Point rectD = new Point(1,1);
 
-            Rectangle R1 = new Rectangle("R1", rectA, rectB, rectC, rectD);
-
             Segment S1 = new Segment("S1", A, B);
             Segment S2 = new Segment("S2", A, B);
 
             Circle C1 = new Circle("C1", A, 2.0);
 
+            string jSon = "{" + C1.ToJson() + "}";
+
+
+            /*
             List<string> test = new List<string>();
             test.Add("Loredane");
             test.Add("Daniel");
@@ -84,7 +86,7 @@ namespace FormApp
             P1.AddPoint(C);
             P1.AddPoint(D);
             P1.AddPoint(new Point(45, 21));
-            string jSon = "{" + P1.ToJson() + "}";
+            string jSon = "{" + C1.ToJson() + "}";
             //DAOFormMySQL.Instance.Save(T1);
             
             */
@@ -106,7 +108,7 @@ namespace FormApp
             /*
            * DANI : AIRE
            * 
-           */
+           
 
             Point A = new Point(0, 0);
             Point B = new Point(5, 0);
@@ -120,6 +122,7 @@ namespace FormApp
             P1.AddPoint(C);
             P1.AddPoint(D);
             //P1.AddPoint(new Point(3, 8));
+        */
 
 
           /*  Triangle T1 = new Triangle("T1");
@@ -128,6 +131,7 @@ namespace FormApp
             T1.AddPoint(E);
             */
 
+            /*
             Rectangle R1 = new Rectangle("R1");
             R1.AddPoint(A);
             R1.AddPoint(B);
@@ -150,6 +154,7 @@ namespace FormApp
 
             System.Console.WriteLine(R1.Area);
             System.Console.ReadLine();
+             * */
         }
     }
 }

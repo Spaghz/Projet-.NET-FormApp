@@ -49,5 +49,13 @@
 
 				return ($points[$index]);
 			}
+
+			public function setPoint($index,$point)
+			{
+				if ($index<0||$index>count($this->points))
+					throw new Exception("Index out of bound : setPoint in Polygon");
+				
+				$this->points[$index] = $point;
+			}
 		}
 ?>

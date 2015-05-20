@@ -3,8 +3,6 @@
 	{
 	    public function createShape2()
 	    {
-	    		    	echo("LINKPOOLYGION<br/>");
-
 	    	if ($this->shapeType==Polygon::$type)
 	    	{
 	    		if (count($this->specificDataArray)<2)

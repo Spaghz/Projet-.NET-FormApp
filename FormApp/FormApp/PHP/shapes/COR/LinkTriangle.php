@@ -3,7 +3,6 @@
 	{
 	    public function createShape2()
 	    {
-	    	echo("LINKTRIANGLE<br/>");
 	    	if ($this->shapeType==Triangle::$type)
 	    	{
 	    		if (count($this->specificDataArray)!=3)

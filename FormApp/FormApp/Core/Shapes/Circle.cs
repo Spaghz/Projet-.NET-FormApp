@@ -193,8 +193,9 @@ namespace FormApp.Core.Shapes
 
         protected override string ToJsonSpecificMore()
         {
-           return "\"Center\":{\"X\":" + Center.X.ToString().Replace(',', '.') + ",\"Y\":" + Center.Y.ToString().Replace(',', '.')
-             + "},\"Radius\":" + Radius.ToString().Replace(',', '.');
+           return   "\"Center\":{\"X\":" + Center.X.ToString().Replace(',', '.') + ",\"Y\":" + Center.Y.ToString().Replace(',', '.') + "},"
+                +   "\"DistantEdgePoint\":{\"X\":" + DistantEdgePoint.X.ToString().Replace(',', '.') + ",\"Y\":" + DistantEdgePoint.Y.ToString().Replace(',', '.')
+                +   "},\"Radius\":" + Radius.ToString().Replace(',', '.');
         }
 
 
@@ -313,7 +314,7 @@ namespace FormApp.Core.Shapes
         public override string ToString()
         {
             String s = "Cercle : \n";
-            s += "{ Center " + Name + ": " + Center.ToString() + " ; Radius : " + Radius + " }";
+            s += "{ Center " + Name + ": " + Center.ToString() + " ; Radius : " + Radius + " ; DistantEdgePoint : " + DistantEdgePoint.ToString() + " }";
             return s;
         }
 

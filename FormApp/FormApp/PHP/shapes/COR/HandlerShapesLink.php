@@ -63,16 +63,19 @@
 		public function createShape($shape)
 		{
 			// Shape must be either a string or an array (converted by json_decode)
-			if (is_string($shape))
-				$shapeAsArray = json_decode($shape,true);
+			$shapeAsArray = (is_string($shape))?json_decode($shape,true):$shape;
+
+			//echo("Je suis le maillon ".get_class($this)."<br/>");
 
 			$currentLinkShape = $this->createShape1($shapeAsArray);
+
 			if ($currentLinkShape != null)
 				return $currentLinkShape;
 			else
 			{
+				//echo("mon successeur est ".get_class($this->successor));
 				if ($this->successor!=null)
-					return $this->successor->createShape1($shapeAsArray);
+					return $this->successor->createShape($shapeAsArray);
 				else
 					return null;
 			}
