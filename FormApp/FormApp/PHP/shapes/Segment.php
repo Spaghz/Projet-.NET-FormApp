@@ -12,14 +12,14 @@
 				public static function createSegment($name,$parent,$edgeSize,$backgroundColor,$edgeColor,$p1,$p2)
 				{
 					$segment = new Segment($name,$parent,$edgeSize,$backgroundColor,$edgeColor);
-					$segment->setP1($p1);
-					$segment->setP2($p2);
+					$segment->addPoint($p1);
+					$segment->addPoint($p2);
 					return $segment;
 				}
 
 				public function getP1()
 				{
-					return $this->p1;
+					return $this->getPoint(0);
 				}
 
 				public function setP1($p)
@@ -30,12 +30,17 @@
 
 				public function getP2()
 				{
-					return $this->p2;
+					return $this->getPoint(1);
 				}
 
 				public function setP2($p)
 				{
 					$this->setPoint(1,$p);
+				}
+
+				public function getTypeId()
+				{
+					return Segment::$type;
 				}
 		}
 

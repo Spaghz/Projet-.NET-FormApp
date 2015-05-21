@@ -58,6 +58,11 @@
 				{
 					$this->setPoint(3,$p);
 				}
+
+			public function getTypeId()
+			{
+				return Rectangle::$type;
+			}
 		}
 
 ?>

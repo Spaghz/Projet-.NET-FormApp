@@ -66,5 +66,30 @@
 		{
 			$this->edgeColor = $edgeColor;
 		}				
+
+		public function getEdgeType()
+		{
+			return 1;
+		}		
+
+		abstract public function getTypeId();	
+
+/*
+		public function push()
+		{
+			MySQLManager::getInstance()->getShapePushStatement()->bindParam(':name',$shape->getName());
+			MySQLManager::getInstance()->getShapePushStatement()->bindParam(':typeId',$shape->getTypeId());
+			MySQLManager::getInstance()->getShapePushStatement()->bindParam(':bgColor',$shape->getBackgroundColor());
+			MySQLManager::getInstance()->getShapePushStatement()->bindParam(':edgeColor',$shape->getEdgeColor());
+			MySQLManager::getInstance()->getShapePushStatement()->bindParam(':edgeSize',$shape->getEdgeSize());
+			MySQLManager::getInstance()->getShapePushStatement()->bindParam(':edgeType',$shape->getEdgeType());			
+			MySQLManager::getInstance()->getShapePushStatement()->execute();
+			$shape->setId(MySQLManager::getInstance()->PDO->lastInsertId());
+
+			$this->push1();
+		}
+
+		abstract protected function push1();
+*/
 	}
 ?>

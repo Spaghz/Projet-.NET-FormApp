@@ -18,6 +18,7 @@
 	    protected	$id;
 	    protected	$parent;
 	    protected	$specificDataArray;
+	    protected	$groupDataArray;
 	    protected	$edgeColor;
 	    protected	$backgroundColor;
 	    protected	$edgeSize;
@@ -73,7 +74,7 @@
 				return $currentLinkShape;
 			else
 			{
-				//echo("mon successeur est ".get_class($this->successor));
+				//echo("mon successeur est ".get_class($this->successor)."<br/>");
 				if ($this->successor!=null)
 					return $this->successor->createShape($shapeAsArray);
 				else
@@ -92,12 +93,26 @@
 				throw new Exception("Given shape is not a valid shape : missing root tag \"name\".");
 			$this->name = strval(array_keys($shapeAsArray)[0]);
 
-			// Check if it contains specificData & globalData
+			//echOArray(array_keys($shapeAsArray[$this->name]));
+
+			// Check if it contains specificData (or GroupData) & globalData
 			if (!(array_key_exists('specificData', $shapeAsArray[$this->name])))
-				throw new Exception("Given shape is not a valid shape : missing tag \"specificData\"");
+			{
+				if (!(array_key_exists('groupData', $shapeAsArray[$this->name])))
+					throw new Exception("Given shape is not a valid shape : missing tag \"groupData\"");
+
+				$this->groupDataArray 		= $shapeAsArray[$this->name]['groupData'];
+				$this->specificDataArray 	= NULL;
+			}
+			else
+			{
+				$this->specificDataArray 	= $shapeAsArray[$this->name]['specificData'];
+				$this->groupDataArray 		= NULL;
+			}
+
 			if (!(array_key_exists('globalData', $shapeAsArray[$this->name])))
 				throw new Exception("Given shape is not a valid shape : missing tag \"specificData\"");
-			$this->specificDataArray 	= $shapeAsArray[$this->name]['specificData'];
+
 			$globalDataArray 			= $shapeAsArray[$this->name]['globalData'];
 
 			// Id

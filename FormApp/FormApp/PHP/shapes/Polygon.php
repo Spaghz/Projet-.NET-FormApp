@@ -57,5 +57,18 @@
 				
 				$this->points[$index] = $point;
 			}
+
+			public function getTypeId()
+			{
+				return Polygon::$type;
+			}
+
+			protected function push1()
+			{
+				foreach($this->points as $point)
+				{
+					$point->push($this);
+				}
+			}
 		}
 ?>

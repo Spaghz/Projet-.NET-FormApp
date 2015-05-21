@@ -46,7 +46,12 @@
 				public function setP3($p)
 				{
 					$this->setPoint(2,$p);
-				}			
+				}	
+
+				public function getTypeId()
+				{
+					return Triangle::$type;
+				}		
 		}
 
 ?>
