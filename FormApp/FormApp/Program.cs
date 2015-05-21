@@ -34,8 +34,13 @@ namespace FormApp
             Segment S2 = new Segment("S2", A, B);
 
             Circle C1 = new Circle("C1", A, 2.0);
+            Group G1 = new Group("G1");
+            G1.AddForm(C1);
+            Group G2 = new Group("G2");
+            G2.AddForm(G1);
+            G2.AddForm(T1);
 
-            string jSon = "{" + C1.ToJson() + "}";
+            string jSon = "{" + G2.ToJson() + "}";
 
 
             /*
