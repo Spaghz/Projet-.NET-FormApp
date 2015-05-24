@@ -40,7 +40,7 @@ namespace FormApp
             G2.AddForm(G1);
             G2.AddForm(T1);
 
-            string jSon = "{" + G2.ToJson() + "}";
+            string jSon = "{" + G1.ToJson() + "}";
 
 
             /*
