@@ -213,5 +213,16 @@ namespace FormApp.Core.Shapes
         {
             this.SetColors(edgeColor, backgroundColor);
         }
+
+        /***********************************
+        *  ToString
+        ***********************************/
+        public override string ToString()
+        {
+            String s = "Groupe : ";
+           foreach(Shape sIn in _forms)
+               s += sIn.ToString();
+           return s;
+        }
     }
 }

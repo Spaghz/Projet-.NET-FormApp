@@ -17,7 +17,7 @@ namespace FormApp
     {
         static void Main(string[] args)
         {
-           Point A = new Point(0.6, 41);
+           /*Point A = new Point(0.6, 41);
             Point B = new Point(1, 1);
             Point C = new Point(5.6, -8);
             Triangle T1 = new Triangle("T1",A,B,C);
@@ -41,7 +41,7 @@ namespace FormApp
             G2.AddForm(T1);
 
             string jSon = "{" + G2.ToJson() + "}";
-
+            */
 
             /*
             List<string> test = new List<string>();
@@ -103,9 +103,9 @@ namespace FormApp
              * LOREDANE : GUI
              * 
              */
-           // Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
+           Application.EnableVisualStyles();
+           Application.SetCompatibleTextRenderingDefault(false);
+           Application.Run(new Form1());
 
 
 

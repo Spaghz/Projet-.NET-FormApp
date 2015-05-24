@@ -25,8 +25,8 @@ namespace FormApp
         private System.Drawing.Graphics     g;
         private System.Drawing.Pen          pen;
 
-        private List<Shape>                  forms;
-        private Shape                        formCurrent;
+        private List<Shape>                  shapes;
+        private Shape                        shapeCurrent;
         
         private Color                       backgroundColor;
         private Color                       strokeColor;
@@ -36,10 +36,10 @@ namespace FormApp
         {
             backgroundColor = new Color(Color.WHITE);
             strokeColor = new Color(Color.BLACK);
-            int[] rgb = backgroundColor.intToRgb();
+            int[] rgb = strokeColor.intToRgb();
             pen = new System.Drawing.Pen(System.Drawing.Color.FromArgb(rgb[0], rgb[1], rgb[2]), 1);
 
-            forms = new List<Shape>();
+            shapes = new List<Shape>();
 
             InitializeStates();
             InitializeComponent();
@@ -70,7 +70,7 @@ namespace FormApp
             this.x1 = x1;
             this.y1 = y1;
 
-            formCurrent.Create(x1, y1, strokeColor, backgroundColor);
+            shapeCurrent.Create(x1, y1, strokeColor, backgroundColor);
         }
 
         public void setPointB(int x2, int y2)
@@ -78,7 +78,7 @@ namespace FormApp
             this.x2 = x2;
             this.y2 = y2;
 
-            formCurrent.SetParamaters(this.x1, this.y1, this.x2, this.y2);
+            shapeCurrent.SetParamaters(this.x1, this.y1, this.x2, this.y2);
         }
 
         public void drawForm()
@@ -86,19 +86,39 @@ namespace FormApp
             g = pictureBox1.CreateGraphics();
             g.Clear(System.Drawing.Color.White);
 
-            foreach (Shape fIn in forms)
-                fIn.Draw(g, pen);
+            foreach (Shape sIn in shapes)
+                sIn.Draw(g, pen);
 
-            formCurrent.Draw(g, pen);
+            shapeCurrent.Draw(g, pen);
         }
 
          public void addToList()
          {
-             Console.WriteLine(formCurrent.ToString());
-             forms.Add(formCurrent);
-             formCurrent = formCurrent.InitializeForm();
+             Console.WriteLine(shapeCurrent.ToString());
+             shapes.Add(shapeCurrent);
+             shapeCurrent = shapeCurrent.InitializeForm();
          }
 
+        public List<Shape> Shapes
+        {
+            get { return shapes; }
+        }
+
+        public System.Drawing.Graphics G
+        {
+            get { return g; }
+        }
+
+        public System.Drawing.Pen Pen
+        {
+            get { return pen; }
+        }
+
+        public System.Windows.Forms.Panel Panel1
+        {
+            get { return this.panel1; }
+            set { this.panel1 = value; }
+        }
 
          /***********************************
          *  MouseEventArgs
@@ -140,35 +160,35 @@ namespace FormApp
         private void btnRectangle_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             controllerCurrent.ButtonClicked(sender, e);
-            formCurrent = new Rectangle("rectangle");
+            shapeCurrent = new Rectangle("rectangle");
             isFormPolygon = false; 
         }
 
         private void btnCircle_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             controllerCurrent.ButtonClicked(sender, e);
-            formCurrent = new Circle("cercle");
+            shapeCurrent = new Circle("cercle");
             isFormPolygon = false;
         }
 
         private void btnSegment_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             controllerCurrent.ButtonClicked(sender, e);
-            formCurrent = new Segment("segment");
+            shapeCurrent = new Segment("segment");
             isFormPolygon = false; 
         }
 
         private void btnPolygon_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             controllerCurrent.ButtonClicked(sender, e);
-            formCurrent = new Polygon("polygon");
+            shapeCurrent = new Polygon("polygon");
             isFormPolygon = true; 
         }
 
         private void btnTriangle_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             controllerCurrent.ButtonClicked(sender, e);
-            formCurrent = new Triangle("triangle");
+            shapeCurrent = new Triangle("triangle");
             isFormPolygon = true; 
         }
 
@@ -187,6 +207,13 @@ namespace FormApp
             colorDialog1.ShowDialog();
             strokeColor = new Color(colorDialog1.Color.R, colorDialog1.Color.G, colorDialog1.Color.B);
             this.btnStrokeColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(colorDialog1.Color.R)))), ((int)(((byte)(colorDialog1.Color.G)))), ((int)(((byte)(colorDialog1.Color.B)))));
+        }
+
+        private void btnGroup_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2(this);
+            form2.Show();
+            this.panel1.Enabled = false;
         }
         
     }

@@ -30,6 +30,7 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnGroup = new System.Windows.Forms.Button();
             this.btnStrokeColor = new System.Windows.Forms.Button();
             this.btnColorDialog = new System.Windows.Forms.Button();
             this.btnTriangle = new System.Windows.Forms.Button();
@@ -63,6 +64,7 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.btnGroup);
             this.panel1.Controls.Add(this.btnStrokeColor);
             this.panel1.Controls.Add(this.btnColorDialog);
             this.panel1.Controls.Add(this.btnTriangle);
@@ -74,6 +76,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(126, 355);
             this.panel1.TabIndex = 2;
+            // 
+            // btnGroup
+            // 
+            this.btnGroup.Location = new System.Drawing.Point(26, 179);
+            this.btnGroup.Name = "btnGroup";
+            this.btnGroup.Size = new System.Drawing.Size(75, 23);
+            this.btnGroup.TabIndex = 12;
+            this.btnGroup.Text = "Grouper";
+            this.btnGroup.UseVisualStyleBackColor = true;
+            this.btnGroup.Click += new System.EventHandler(this.btnGroup_Click);
             // 
             // btnStrokeColor
             // 
@@ -155,7 +167,9 @@
             this.ClientSize = new System.Drawing.Size(603, 359);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
+            this.Location = new System.Drawing.Point(100, 50);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Geometry 2D";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -177,5 +191,6 @@
         private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.Button btnStrokeColor;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Button btnGroup;
     }
 }

@@ -313,7 +313,7 @@ namespace FormApp.Core.Shapes
         ***********************************/
         public override string ToString()
         {
-            String s = "Cercle : \n";
+            String s = "Cercle : ";
             s += "{ Center " + Name + ": " + Center.ToString() + " ; Radius : " + Radius + " ; DistantEdgePoint : " + DistantEdgePoint.ToString() + " }";
             return s;
         }
