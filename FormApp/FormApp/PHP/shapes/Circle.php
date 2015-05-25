@@ -6,7 +6,7 @@
 
 				public function __construct($id,$parent,$edgeSize,$backgroundColor,$edgeColor)
 				{
-					parent::__construct($id,$parent,$edgeSize,$backgroundColor,$edgeColor,Circle::$type);
+					parent::__construct($id,$parent,$edgeSize,$backgroundColor,$edgeColor);
 				}
 
 				public static function createCircle($name,$parent,$edgeSize,$backgroundColor,$edgeColor,$p1,$p2,$radius)
@@ -47,7 +47,12 @@
 				public function setRadius($radius)
 				{
 					$this->radius = $radius;
-				}						
+				}	
+
+				public function getTypeId()
+				{
+					return Circle::$type;
+				}					
 		}
 
 ?>

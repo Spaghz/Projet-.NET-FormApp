@@ -18,7 +18,6 @@
 					$polygon->addPoint($currentPoint);
 				}
 				return $polygon;
-
 			}
 
 			public function getPoints()

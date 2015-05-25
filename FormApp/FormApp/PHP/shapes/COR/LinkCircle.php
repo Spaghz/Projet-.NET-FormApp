@@ -1,43 +1,82 @@
 <?php
 	class LinkCircle extends HandlerShapesLink
 	{
-	    public function createShape2()
-	    {
-	    	if ($this->shapeType==Circle::$type)
-	    	{
-	    		$radius = null;
+		public function __construct(&$successor=NULL)
+		{
+			parent::__construct(Circle::$type,$successor);
+		}
 
-	    		if (count($this->specificDataArray)!=3)
-	    			throw new Exception("Invalid specific data for Circle!");
+		/*
+		______          _     
+		| ___ \        | |    
+		| |_/ /   _ ___| |__  
+		|  __/ | | / __| '_ \ 
+		| |  | |_| \__ \ | | |
+		\_|   \__,_|___/_| |_|
+		                                         
+		 */
+		
+		public function pushShape1(&$shape)
+		{
+			return DAOCircleMySQL::getInstance()->push($shape);
+		}
 
-	    		$points = array();
+		/*
+		______      _ _ 
+		| ___ \    | | |
+		| |_/ /   _| | |
+		|  __/ | | | | |
+		| |  | |_| | | |
+		\_|   \__,_|_|_|
+		                                
+		 */
 
-	    		foreach($this->specificDataArray as $key => $value)
-	    		{
-	    			if (count($value)==2)
-	    				array_push($points,new Point(array_shift($value),array_shift($value)));
-	    			else if ($key=="Radius")
-	    				$radius = $value;
-	    		}
+		public function pullShape2($pullShapeResponse)
+		{
+			$points = DAOPointMySQL::getInstance()->pullPoints($pullShapeResponse['id']);
+			$circle =  Circle::createCircle(
+					$pullShapeResponse['name'],
+					NULL,
+					$pullShapeResponse['edgeSize'],
+					$pullShapeResponse['bgColor'],
+					$pullShapeResponse['edgeColor'],
+					$points[0],
+					$points[1],
+					$points[0]->getDistance($points[1])
+			);
+			$circle->setId($pullShapeResponse['id']);
+			return $circle;
+		}
 
-	    		if ($radius==null)
-	    			throw new Exception("Invalid specific data for Circle, radius is missing from json!");
+		/*
+		 _____                _       
+		/  __ \              | |      
+		| /  \/_ __ ___  __ _| |_ ___ 
+		| |   | '__/ _ \/ _` | __/ _ \
+		| \__/\ | |  __/ (_| | ||  __/
+		 \____/_|  \___|\__,_|\__\___|
+		                              
+		 */
+		
 
-	    		return Circle::createCircle(
-	    			$this->name,
-	    			$this->parent,
-	    			$this->edgeSize,
-	    			$this->backgroundColor,
-	    			$this->edgeColor,
-	    			$points[0],
-	    			$points[1],
-	    			$radius
-	    		);
-	    	}
-	    	else
-	    	{
-	    		return null;
-	    	}
-	    }
+		public function createShape2($information)
+		{
+    		$points = array();
+
+    		if (count($information['specificData'])!=3)
+    			throw new Exception("Error while creating shape from json : Circle must have 2 points (Center & random edge point)! Number of parameters given : ".count($information['specificData']));
+
+			return Circle::createCircle(
+					$information['name'],
+					NULL,
+					$information['globalData']['EdgeSize'],
+					$information['globalData']['BackgroundColor'],
+					$information['globalData']['EdgeColor'],
+					new Point($information['specificData']['Center']['X'],$information['specificData']['Center']['Y']),
+					new Point($information['specificData']['DistantEdgePoint']['X'],$information['specificData']['DistantEdgePoint']['Y']),
+					$information['specificData']['Radius']
+			);
+		}
 	}
+
 ?>

@@ -25,6 +25,25 @@
 			MySQLManager::getInstance()->getPushPointStatement()->execute();
 
 			$point->setId(MySQLManager::getInstance()->getPDO()->lastInsertId());
+
+			return $point;
+		}
+
+		public function pullPoints($shapeId)
+		{
+			if (!filter_var($shapeId, FILTER_VALIDATE_INT))
+				throw new Exception("Supplied code must be a valid integer number to pull a shape.");
+
+			$pullPointsStatement = MySQLManager::getInstance()->getPDO()->prepare("SELECT * FROM `point` WHERE `idPoint`IN (SELECT `idPoint` FROM `ownpoint` WHERE `idShape`=:idShape)");
+			$pullPointsStatement->bindParam('idShape',$shapeId);
+			$pullPointsStatement->execute();
+			$pointsArray = $pullPointsStatement->fetchAll();
+			$points = array();
+
+			foreach($pointsArray as $value)
+				array_push($points,new Point($value['x'],$value['y'],$value['idPoint']));
+			
+			return $points;
 		}
 	}
 ?>

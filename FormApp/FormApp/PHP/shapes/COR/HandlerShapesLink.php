@@ -1,27 +1,8 @@
 <?php
 	abstract class HandlerShapesLink extends HandlerShapes
 	{
-		/*
-			___  ___               _                   
-			|  \/  |              | |                  
-			| .  . | ___ _ __ ___ | |__   ___ _ __ ___ 
-			| |\/| |/ _ \ '_ ` _ \| '_ \ / _ \ '__/ __|
-			| |  | |  __/ | | | | | |_) |  __/ |  \__ \
-			\_|  |_/\___|_| |_| |_|_.__/ \___|_|  |___/
-
-		 */
-		
-	    private 	$successor;
-
-	    protected 	$shapeType;
-	    protected	$name;
-	    protected	$id;
-	    protected	$parent;
-	    protected	$specificDataArray;
-	    protected	$groupDataArray;
-	    protected	$edgeColor;
-	    protected	$backgroundColor;
-	    protected	$edgeSize;
+		protected 	$shapeType;
+		private 	$successor;
 
 	    /*
 			 _____                 _                   _             
@@ -31,132 +12,119 @@
 			| \__/\ (_) | | | \__ \ |_| |  | |_| | (__| || (_) | |   
 			 \____/\___/|_| |_|___/\__|_|   \__,_|\___|\__\___/|_|   
 	     */
-
-	    public function __construct()
+	    
+	    public function __construct($shapeType,&$successor=NULL)
 	    {
-	    	$this->successor = NULL;
-	    }
-
-	    /*
-			 _____      _              _____      _   
-			|  __ \    | |     ___    /  ___|    | |  
-			| |  \/ ___| |_   ( _ )   \ `--.  ___| |_ 
-			| | __ / _ \ __|  / _ \/\  `--. \/ _ \ __|
-			| |_\ \  __/ |_  | (_>  < /\__/ /  __/ |_ 
-			 \____/\___|\__|  \___/\/ \____/ \___|\__|
-	     */
-	 
-	 
-	    public function setSuccessor(&$nextService)
-	    {
-	        $this->successor=$nextService;
-	    }
+	    	$this->successor=$successor;
+	    	$this->shapeType = $shapeType;
+	    }		
 
 		/*
-			___  ___     _   _               _     
-			|  \/  |    | | | |             | |    
-			| .  . | ___| |_| |__   ___   __| |___ 
-			| |\/| |/ _ \ __| '_ \ / _ \ / _` / __|
-			| |  | |  __/ |_| | | | (_) | (_| \__ \
-			\_|  |_/\___|\__|_| |_|\___/ \__,_|___/
-		 */	    
+		______          _     
+		| ___ \        | |    
+		| |_/ /   _ ___| |__  
+		|  __/ | | / __| '_ \ 
+		| |  | |_| \__ \ | | |
+		\_|   \__,_|___/_| |_|
+		                                         
+		 */
 
-		public function createShape($shape)
+		public function pushShape(&$shape)
 		{
-			// Shape must be either a string or an array (converted by json_decode)
-			$shapeAsArray = (is_string($shape))?json_decode($shape,true):$shape;
-
-			//echo("Je suis le maillon ".get_class($this)."<br/>");
-
-			$currentLinkShape = $this->createShape1($shapeAsArray);
-
-			if ($currentLinkShape != null)
-				return $currentLinkShape;
+			if ($this->isRightLinkType1($shape))
+				return $this->pushShape1($shape);
+			else if (!is_null($this->successor))
+				return $this->successor->pushShape($shape);
 			else
-			{
-				//echo("mon successeur est ".get_class($this->successor)."<br/>");
-				if ($this->successor!=null)
-					return $this->successor->createShape($shapeAsArray);
-				else
-					return null;
-			}
+				return NULL;
 		}
 
-	    protected function checkShape($shapeAsArray)
-	    {
-	    	// This function checks if the given array '$shape' is a valid shape => meaning that it's got every tags it should
-	    	// (Amongst them 'globalData' and 'specificData' for instance)
-	    	// Throws exception if an error occurs
-	    	
-			// Name (Root of the shape)
-			if (!isset(array_keys($shapeAsArray)[0]))
-				throw new Exception("Given shape is not a valid shape : missing root tag \"name\".");
-			$this->name = strval(array_keys($shapeAsArray)[0]);
+		abstract public function pushShape1(&$shape);
 
-			//echOArray(array_keys($shapeAsArray[$this->name]));
+		/*
+		______      _ _ 
+		| ___ \    | | |
+		| |_/ /   _| | |
+		|  __/ | | | | |
+		| |  | |_| | | |
+		\_|   \__,_|_|_|
 
-			// Check if it contains specificData (or GroupData) & globalData
-			if (!(array_key_exists('specificData', $shapeAsArray[$this->name])))
+		 */
+		
+		public function pullShape1($pullShapeResponse)
+		{
+			/*
+			var_dump($pullShapeResponse);
+			var_dump(get_class($this));
+			var_dump($this->shapeType);
+			*/
+			if ($this->isRightLinkType3($pullShapeResponse))
 			{
-				if (!(array_key_exists('groupData', $shapeAsArray[$this->name])))
-					throw new Exception("Given shape is not a valid shape : missing tag \"groupData\"");
-
-				$this->groupDataArray 		= $shapeAsArray[$this->name]['groupData'];
-				$this->specificDataArray 	= NULL;
+				return $this->pullShape2($pullShapeResponse);
+			}
+			else if (!is_null($this->successor))
+			{
+				return $this->successor->pullShape1($pullShapeResponse);
 			}
 			else
-			{
-				$this->specificDataArray 	= $shapeAsArray[$this->name]['specificData'];
-				$this->groupDataArray 		= NULL;
-			}
+				return NULL;			
+		}
 
-			if (!(array_key_exists('globalData', $shapeAsArray[$this->name])))
-				throw new Exception("Given shape is not a valid shape : missing tag \"specificData\"");
+		abstract public function pullShape2($pullShapeResponse);
 
-			$globalDataArray 			= $shapeAsArray[$this->name]['globalData'];
+		/*
+		 _____                _       
+		/  __ \              | |      
+		| /  \/_ __ ___  __ _| |_ ___ 
+		| |   | '__/ _ \/ _` | __/ _ \
+		| \__/\ | |  __/ (_| | ||  __/
+		 \____/_|  \___|\__,_|\__\___|
+		                              
+		 */
+		
 
-			// Id
-			if (!isset($shapeAsArray[$this->name]['globalData']['Id']))
-				throw new Exception("Given shape is not a valid shape : missing tag \"Id\".");
-			$this->id = intval($globalDataArray['Id']);
-
-
-			// Parent
-			if (!array_key_exists('Parent',$globalDataArray))
-				throw new Exception("Given shape is not a valid shape : missing tag \"parent\".");
-			else if (strlen(strval($globalDataArray['Parent']))==0)
-					$this->parent = null;
+		public function createShape1($information)
+		{
+			if ($this->isRightLinkType2($information))
+				return $this->createShape2($information);
+			else if (!is_null($this->successor))
+				return $this->successor->createShape1($information);
 			else
-					$this->parent = intval($shapeAsArray[$this->name]['globalData']['Parent']);		
+				return NULL;
+		}
 
-			// Type
-			if (!isset($globalDataArray['Type']))
-				throw new Exception("Given shape is not a valid shape : missing tag \"Type\".");
-			$this->shapeType = 	intval($globalDataArray['Type']);
+		abstract public function createShape2($information);
 
-			// EdgeColor
-			if (!isset($globalDataArray['EdgeColor']))
-				throw new Exception("Given shape is not a valid shape : missing tag \"EdgeColor\".");
-			$this->edgeColor = 	intval($globalDataArray['EdgeColor']);	
 
-			// BackgroundColor
-			if (!isset($globalDataArray['BackgroundColor']))
-				throw new Exception("Given shape is not a valid shape : missing tag \"EdgeColor\".");
-			$this->backgroundColor = 	intval($globalDataArray['BackgroundColor']);
+		/*
+		 _   _ _   _ _     
+		| | | | | (_) |    
+		| | | | |_ _| |___ 
+		| | | | __| | / __|
+		| |_| | |_| | \__ \
+		 \___/ \__|_|_|___/
 
-			// edgeSize
-			if (!isset($globalDataArray['EdgeSize']))
-				throw new Exception("Given shape is not a valid shape : missing tag \"EdgeColor\".");
-			$this->edgeSize = 	intval($globalDataArray['EdgeSize']);
-	    }
+		                   
+		 */
+		
+		private function isRightLinkType1($shape)
+		{
+			return (strcmp(get_class($shape),substr(get_class($this),4))==0);
+		}
 
-	    public function createShape1($shapeAsArray)
-	    {
-	    	$this->checkShape($shapeAsArray);
+		private function isRightLinkType2($information)
+		{
+			return (intval($information['globalData']['Type']==intval($this->shapeType)));
+		}
 
-	    	return $this->createShape2($shapeAsArray);
-	    }
+		private function isRightLinkType3($pullShapeResponse)
+		{
+			return (intval($pullShapeResponse['typeId']==intval($this->shapeType)));
+		}
 
-	    abstract public function createShape2();
+		protected function setLinkType($shapeType)
+		{
+
+		}
 	}
 ?>

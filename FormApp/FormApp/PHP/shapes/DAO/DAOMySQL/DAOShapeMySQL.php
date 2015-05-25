@@ -35,11 +35,27 @@
             ));
 
             $shape->setId(MySQLManager::getInstance()->getPDO()->lastInsertId());
+
+            return $shape;
 		}
 
 		public function pull($code)
 		{
+			$countStatement = MySQLManager::getInstance()->getPDO()->prepare("SELECT * FROM shape WHERE id=:lookupId");
+			$countStatement->bindParam('lookupId',$code);
+			$countStatement->execute();
+			if($countStatement->rowCount()==1);
+				return $countStatement->fetch();
+			return NULL;
+		}
 
+		public function pullParentId($code)
+		{
+			$countStatement = MySQLManager::getInstance()->getPDO()->prepare("SELECT `idFather` FROM `ownshape` WHERE `idSon`=:lookupId");
+			$countStatement->bindParam('lookupId',$code);
+			$countStatement->execute();
+			$res = $countStatement->fetch();
+			return ($res==false)?NULL:$res;
 		}
 	}
 ?>

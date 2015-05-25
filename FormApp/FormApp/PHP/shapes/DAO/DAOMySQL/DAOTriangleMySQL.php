@@ -27,8 +27,7 @@
 				DAOPointMySQL::getInstance()->push($point);
 				DAOOwnPointMySQL::getInstance()->push($triangle,$point);
 			}
-
-
+			return $triangle;
 		}		
 
 		public function pull($code)

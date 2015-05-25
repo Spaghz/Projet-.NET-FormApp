@@ -27,6 +27,13 @@
 			$this->id = $id;
 		}
 
+		public function setParent(&$shape)
+		{
+			if (!is_a($shape,'Shape'))
+				throw new Exception("Parent shape must be a valid shape form!");
+			$this->parent=$shape;
+		}
+
 		public function getName()
 		{
 			return $this->name;
@@ -73,23 +80,5 @@
 		}		
 
 		abstract public function getTypeId();	
-
-/*
-		public function push()
-		{
-			MySQLManager::getInstance()->getShapePushStatement()->bindParam(':name',$shape->getName());
-			MySQLManager::getInstance()->getShapePushStatement()->bindParam(':typeId',$shape->getTypeId());
-			MySQLManager::getInstance()->getShapePushStatement()->bindParam(':bgColor',$shape->getBackgroundColor());
-			MySQLManager::getInstance()->getShapePushStatement()->bindParam(':edgeColor',$shape->getEdgeColor());
-			MySQLManager::getInstance()->getShapePushStatement()->bindParam(':edgeSize',$shape->getEdgeSize());
-			MySQLManager::getInstance()->getShapePushStatement()->bindParam(':edgeType',$shape->getEdgeType());			
-			MySQLManager::getInstance()->getShapePushStatement()->execute();
-			$shape->setId(MySQLManager::getInstance()->PDO->lastInsertId());
-
-			$this->push1();
-		}
-
-		abstract protected function push1();
-*/
 	}
 ?>

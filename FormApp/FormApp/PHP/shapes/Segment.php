@@ -2,7 +2,6 @@
 		class Segment extends Polygon
 		{
 				public static $type = 2;
-				private $p1,$p2;
 
 				public function __construct($id,$parent,$edgeSize,$backgroundColor,$edgeColor)
 				{
