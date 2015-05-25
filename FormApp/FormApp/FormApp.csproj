@@ -113,15 +113,6 @@
     <None Include="PHP\save.php" />
     <None Include="PHP\server.php" />
     <None Include="PHP\shapes\Circle.php" />
-    <None Include="PHP\shapes\CORB\CORShape.php" />
-    <None Include="PHP\shapes\CORB\HandlerShapes.php" />
-    <None Include="PHP\shapes\CORB\HandlerShapesLink.php" />
-    <None Include="PHP\shapes\CORB\LinkCircle.php" />
-    <None Include="PHP\shapes\CORB\LinkGroup.php" />
-    <None Include="PHP\shapes\CORB\LinkPolygon.php" />
-    <None Include="PHP\shapes\CORB\LinkRectangle.php" />
-    <None Include="PHP\shapes\CORB\LinkSegment.php" />
-    <None Include="PHP\shapes\CORB\LinkTriangle.php" />
     <None Include="PHP\shapes\COR\CORShape.php" />
     <None Include="PHP\shapes\COR\HandlerShapes.php" />
     <None Include="PHP\shapes\COR\HandlerShapesLink.php" />
