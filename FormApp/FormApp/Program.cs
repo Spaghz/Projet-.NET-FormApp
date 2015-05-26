@@ -80,6 +80,7 @@ namespace FormApp
              * JONATHAN : UPLOAD PHP
              * 
              */
+            /*
             Point A = new Point(0.6, 41);
             Point B = new Point(1, 1);
             Point C = new Point(5.6, -8);
@@ -96,7 +97,7 @@ namespace FormApp
             string jSon = "{" + R1.ToJson() + "}";
             DAOFormMySQL.Instance.Save(R1);
             Shape s = (DAOFormMySQL.Instance.Load(2));
-
+            */
 
 
 

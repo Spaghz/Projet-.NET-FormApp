@@ -7,7 +7,7 @@ using FormApp.Core.Shapes;
 
 namespace FormApp.Core.DAO
 {
-    public interface IDAOForm
+    public interface IWebService
     {
         void Save(Shape f);
         Shape Load(int id);

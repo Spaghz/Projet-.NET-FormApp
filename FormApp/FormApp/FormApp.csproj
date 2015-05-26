@@ -45,8 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\DAO\IDAOForm.cs" />
-    <Compile Include="Core\DAO\DAOFormMySQL.cs" />
+    <Compile Include="Core\DAO\IWebService.cs" />
+    <Compile Include="Core\DAO\WebServiceManager.cs" />
     <Compile Include="Core\Shapes\Circle.cs" />
     <Compile Include="Core\Shapes\COR\COR.cs" />
     <Compile Include="Core\Shapes\COR\CORShape.cs" />

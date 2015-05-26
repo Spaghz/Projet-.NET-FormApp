@@ -143,5 +143,10 @@ namespace FormApp.Core.Shapes
         *  Create Form
         ***********************************/
         public abstract void Create(int x, int y, Color edgeColor, Color backgroundColor);
+
+        /***********************************
+        *  Webservice Interactions
+        ***********************************/
+
     }
 }

@@ -40,17 +40,23 @@
             this.btnCircle = new System.Windows.Forms.Button();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.ErrorImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(123, -5);
+            this.pictureBox1.Location = new System.Drawing.Point(123, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(481, 360);
+            this.pictureBox1.Size = new System.Drawing.Size(481, 350);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -74,7 +80,7 @@
             this.panel1.Controls.Add(this.btnCircle);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(126, 355);
+            this.panel1.Size = new System.Drawing.Size(126, 350);
             this.panel1.TabIndex = 2;
             // 
             // btnGroup
@@ -159,12 +165,57 @@
             this.btnCircle.UseVisualStyleBackColor = true;
             this.btnCircle.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnCircle_MouseClick);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Location = new System.Drawing.Point(0, 353);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(604, 69);
+            this.panel2.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(26, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(178, 41);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Push canva";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(318, 14);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(178, 41);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Pull Shape N-";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(501, 25);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(90, 20);
+            this.textBox1.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(0, 422);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(605, 30);
+            this.label1.TabIndex = 4;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(603, 359);
+            this.ClientSize = new System.Drawing.Size(603, 447);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Location = new System.Drawing.Point(100, 50);
@@ -173,6 +224,8 @@
             this.Text = "Geometry 2D";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,5 +245,10 @@
         private System.Windows.Forms.Button btnStrokeColor;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button btnGroup;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

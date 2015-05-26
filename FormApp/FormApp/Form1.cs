@@ -8,6 +8,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FormApp.Core.Shapes.COR;
+using FormApp.Core.DAO;
 
 namespace FormApp
 {
@@ -30,6 +32,8 @@ namespace FormApp
         
         private Color                       backgroundColor;
         private Color                       strokeColor;
+
+        private Shape                       pulledShape;
        
        
         public Form1()
@@ -214,6 +218,39 @@ namespace FormApp
             Form2 form2 = new Form2(this);
             form2.Show();
             this.panel1.Enabled = false;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach(Shape s in Shapes)
+                {
+                    WebServiceManager.Instance.Save(s);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.textBox1.Text.Length == 0)
+                    throw new Exception("Please specifiy a number in the textbox next to pull button.");
+
+                Convert.ToInt32(this.textBox1.Text);
+
+                int shapeId = Convert.ToInt32(this.textBox1.Text);
+                pulledShape = WebServiceManager.Instance.Load(shapeId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         
     }

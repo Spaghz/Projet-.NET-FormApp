@@ -11,9 +11,9 @@ using FormApp.Core.Shapes.COR;
 
 namespace FormApp.Core.DAO
 {
-    public class DAOFormMySQL : IDAOForm
+    public class WebServiceManager : IWebService
     {
-        private static DAOFormMySQL _instance;
+        private static WebServiceManager _instance;
 
         private string  _WEBSERVICE_Address;
         private string  _WEBSERVICE_SavePage;
@@ -23,7 +23,7 @@ namespace FormApp.Core.DAO
         /***********************************
          *  Constructor(s)
          ***********************************/
-        private DAOFormMySQL(string webserviceAddress = @"http://127.0.0.1/formApp/webservice.php", string webServiceLoadPage = "save.php",
+        private WebServiceManager(string webserviceAddress = @"http://127.0.0.1/formApp/webservice.php", string webServiceLoadPage = "save.php",
             string webServiceSavePage = "load.php", string webServiceMethod = "POST")
         {
             _WEBSERVICE_Address     = webserviceAddress;
@@ -56,12 +56,12 @@ namespace FormApp.Core.DAO
         /***********************************
          *  Propertie(s)
          ***********************************/
-        public static DAOFormMySQL Instance
+        public static WebServiceManager Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new DAOFormMySQL();
+                    _instance = new WebServiceManager();
 
                 return _instance;
             }
