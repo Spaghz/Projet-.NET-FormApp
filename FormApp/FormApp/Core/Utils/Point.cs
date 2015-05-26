@@ -22,7 +22,6 @@ namespace FormApp.Core.Utils
             _y = y;
         }
 
-
         public Point(Point p)
         {
             _x = p.X;

@@ -15,6 +15,11 @@ namespace FormApp.State
 
         public override void ButtonClicked(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            if (_drawWindow.isFormPolygon)
+            {
+                _drawWindow.Next = this.Back;
+                _drawWindow.setPointA(e.X, e.Y);
+            }
         }
 
         public override void ButtonPressed(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -23,16 +28,6 @@ namespace FormApp.State
 
         public override void ButtonReleased(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            if (_drawWindow.isFormPolygon)
-            {
-                _drawWindow.Next = this.Back;
-                _drawWindow.setPointA(e.X, e.Y);
-            }
-            else
-            {
-                _drawWindow.addToList();
-                _drawWindow.Next = this.Next;
-            }
         }
 
         public override void ButtonDragged(object sender, System.Windows.Forms.MouseEventArgs e)

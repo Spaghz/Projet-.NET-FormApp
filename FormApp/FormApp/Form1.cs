@@ -27,8 +27,8 @@ namespace FormApp
         private System.Drawing.Graphics     g;
         private System.Drawing.Pen          pen;
 
-        private List<Shape>                  shapes;
-        private Shape                        shapeCurrent;
+        private List<Shape>                 shapes;
+        private Shape                       shapeCurrent;
         
         private Color                       backgroundColor;
         private Color                       strokeColor;
@@ -98,9 +98,12 @@ namespace FormApp
 
          public void addToList()
          {
-             Console.WriteLine(shapeCurrent.ToString());
-             shapes.Add(shapeCurrent);
-             shapeCurrent = shapeCurrent.InitializeForm();
+             if (x2 != 0 && y2 != 0)
+             { 
+                Console.WriteLine(shapeCurrent.ToString());
+                shapes.Add(shapeCurrent);
+                shapeCurrent = shapeCurrent.InitializeForm();
+             }
          }
 
         public List<Shape> Shapes
@@ -129,31 +132,26 @@ namespace FormApp
          ***********************************/
         private void pictureBox1_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            //System.Console.Write("MouseClick on " + controllerCurrent.GetType().ToString() + "\n");
-            //controllerCurrent.LeftButtonClicked(sender, e);
+            controllerCurrent.ButtonClicked(sender, e);
         }
 
         private void pictureBox1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            //System.Console.Write("MouseDown on " + controllerCurrent.GetType().ToString() + "\n");
             controllerCurrent.ButtonPressed(sender, e);
         }
 
         private void pictureBox1_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            //System.Console.Write("MouseUp on " + controllerCurrent.GetType().ToString() + "\n");
             controllerCurrent.ButtonReleased(sender, e);
         }
 
         private void pictureBox1_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            //System.Console.Write("MouseMove on " + controllerCurrent.GetType().ToString() + "\n");
             controllerCurrent.ButtonDragged(sender, e);
         }
 
         private void pictureBox1_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            //System.Console.Write("MouseDoubleClick on " + controllerCurrent.GetType().ToString() + "\n");
             controllerCurrent.ButtonDoubleClicked(sender, e);
         }
 
@@ -171,7 +169,7 @@ namespace FormApp
         private void btnCircle_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             controllerCurrent.ButtonClicked(sender, e);
-            shapeCurrent = new Circle("cercle");
+            shapeCurrent = new Circle("circle");
             isFormPolygon = false;
         }
 

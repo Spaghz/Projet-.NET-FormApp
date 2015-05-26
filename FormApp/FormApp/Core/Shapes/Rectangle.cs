@@ -15,7 +15,10 @@ namespace FormApp.Core.Shapes
         public Rectangle(string name)
             : base(name)
         {
-           
+            this.AddPoint(null);
+            this.AddPoint(null);
+            this.AddPoint(null);
+            this.AddPoint(null);
         }
 
 

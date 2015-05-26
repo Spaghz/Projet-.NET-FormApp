@@ -196,6 +196,11 @@ namespace FormApp.Core.Shapes
         {
             this.EdgeColor = edgeColor;
             this.BackgroundColor = backgroundColor;
+            /*foreach (Shape sIn in _forms) 
+            {
+                sIn.EdgeColor = edgeColor;
+                sIn.BackgroundColor = backgroundColor;
+            }*/
         }
 
         /***********************************

@@ -45,7 +45,7 @@ namespace FormApp
             shapes = form1.Shapes;
             checkedListBoxForm.Items.Clear();
             foreach (Shape sIn in shapes)
-                checkedListBoxForm.Items.Add(sIn.ToString());
+                checkedListBoxForm.Items.Add(sIn.Name.ToString());
 
         }
 
@@ -53,11 +53,14 @@ namespace FormApp
         {
             Group group = new Group("group");
             group.SetColors(strokeColor, strokeColor);
-            int index; 
+            int index;
+            Shape shape;
             for (int i = 0; i <= checkedListBoxForm.CheckedItems.Count - 1; i++)
             {
                 index = checkedListBoxForm.CheckedIndices[i];
-                group.AddForm(shapes.ElementAt(index));
+                shape = shapes.ElementAt(index);
+                //shape.SetColors(strokeColor, strokeColor);
+                group.AddForm(shape);
             }
             for (int i = checkedListBoxForm.CheckedItems.Count - 1; i >= 0 ; i--)
             {
