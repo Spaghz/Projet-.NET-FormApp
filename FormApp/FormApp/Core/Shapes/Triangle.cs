@@ -12,7 +12,7 @@ namespace FormApp.Core.Shapes
     [DataContract]
     public sealed class Triangle : Polygon
     {
-        private static readonly int _type = 1;
+        new public static readonly int _type = 1;
 
         public Triangle(String name)
             :base(name)

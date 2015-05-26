@@ -29,6 +29,13 @@ namespace FormApp.Core.Utils
             _y = p.Y;
         }
 
+        public Point(string serializedPoint)
+        {
+            string[] splittedPoint = serializedPoint.Split(':');
+            _x = Convert.ToDouble(splittedPoint[0].Replace('.',','));
+            _y = Convert.ToDouble(splittedPoint[1].Replace('.', ','));
+        }
+
 
         /***********************************
          *  Properties

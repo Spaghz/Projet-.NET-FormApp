@@ -18,7 +18,7 @@ namespace FormApp.Core.Shapes
 
         private List<Shape>  _forms;
         private bool        _singleColorGroup;
-        private static readonly int _type = 5;
+        public static readonly int _type = 5;
 
         /***********************************
          *  Constructor(s)

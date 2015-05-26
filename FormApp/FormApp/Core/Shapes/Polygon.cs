@@ -14,7 +14,7 @@ namespace FormApp.Core.Shapes
          *  Members
          ***********************************/
         private List<Point> _points;
-        private readonly static int _type = 4;
+        public readonly static int _type = 4;
         bool convexe = true;
 
         /***********************************

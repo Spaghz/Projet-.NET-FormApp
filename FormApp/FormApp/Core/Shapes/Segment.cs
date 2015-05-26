@@ -11,7 +11,7 @@ namespace FormApp.Core.Shapes
     public sealed class Segment : ShapeSimple
     {
         private Point _p1, _p2;
-        private static readonly int _type = 2;
+        public static readonly int _type = 2;
 
         public Segment(string name)
             : base(name)

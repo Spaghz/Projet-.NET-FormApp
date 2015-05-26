@@ -7,6 +7,7 @@ using FormApp.Core.Shapes;
 using System.Net;
 using System.Windows.Forms;
 using System.IO;
+using FormApp.Core.Shapes.COR;
 
 namespace FormApp.Core.DAO
 {
@@ -22,7 +23,7 @@ namespace FormApp.Core.DAO
         /***********************************
          *  Constructor(s)
          ***********************************/
-        private DAOFormMySQL(string webserviceAddress = @"http://127.0.0.1/formApp/", string webServiceLoadPage = "save.php",
+        private DAOFormMySQL(string webserviceAddress = @"http://127.0.0.1/formApp/webservice.php", string webServiceLoadPage = "save.php",
             string webServiceSavePage = "load.php", string webServiceMethod = "POST")
         {
             _WEBSERVICE_Address     = webserviceAddress;
@@ -38,14 +39,18 @@ namespace FormApp.Core.DAO
         {
             WebClient client = new WebClient();
 
-            string response3 = client.UploadString(_WEBSERVICE_Address + @_WEBSERVICE_SavePage, "POST", "{"+f.ToJson()+"}");
+            string webServiceResponse = client.UploadString(_WEBSERVICE_Address+"?module=push", "POST", "{"+f.ToJson()+"}");
 
-            MessageBox.Show(response3);
+            f.Id = Int32.Parse(webServiceResponse);
         }
 
         public Shape Load(int id)
         {
-            throw new NotImplementedException();
+
+            WebClient client = new WebClient();
+
+            string webServiceResponse = client.UploadString(_WEBSERVICE_Address + "?module=pull&id="+id.ToString(), "");
+            return COR.Instance.CORShape.CreateShape(webServiceResponse);
         }
 
         /***********************************

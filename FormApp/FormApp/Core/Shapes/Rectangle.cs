@@ -10,7 +10,7 @@ namespace FormApp.Core.Shapes
 {
     public class Rectangle : Polygon
     {
-        private static readonly int _type = 3;
+        new public static readonly int _type = 3;
 
         public Rectangle(string name)
             : base(name)
@@ -19,19 +19,19 @@ namespace FormApp.Core.Shapes
         }
 
 
-        public Rectangle(string name, Point p1, Point p2)
+        public Rectangle(string name, Point topleftPoint, Point bottomRightPoint)
             : base(name)
         {
           
-            if (p1.X == p2.X || p1.Y == p2.Y)
+            if (topleftPoint.X == bottomRightPoint.X || topleftPoint.Y == bottomRightPoint.Y)
                 throw new ArgumentException("X or Y parameters are equals, try another second point");
             else
             {
-                this.AddPoint(p1);
-                this.AddPoint(p2);
+                this.AddPoint(topleftPoint);
+                this.AddPoint(bottomRightPoint);
 
-                this.AddPoint(new Point(p2.X, p1.Y));
-                this.AddPoint(new Point(p1.X, p2.Y));
+                this.AddPoint(new Point(bottomRightPoint.X, topleftPoint.Y));
+                this.AddPoint(new Point(topleftPoint.X, bottomRightPoint.Y));
             }
         }
 

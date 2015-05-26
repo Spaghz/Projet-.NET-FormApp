@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using FormApp.Core.DAO;
+using FormApp.Core.Shapes.COR;
 
 namespace FormApp
 {
@@ -17,6 +18,7 @@ namespace FormApp
     {
         static void Main(string[] args)
         {
+            /*
            Point A = new Point(0.6, 41);
             Point B = new Point(1, 1);
             Point C = new Point(5.6, -8);
@@ -41,7 +43,7 @@ namespace FormApp
             G2.AddForm(T1);
 
             string jSon = "{" + S1.ToJson() + "}";
-            
+            */
 
             /*
             List<string> test = new List<string>();
@@ -78,23 +80,24 @@ namespace FormApp
              * JONATHAN : UPLOAD PHP
              * 
              */
-        /*    Point A = new Point(0.6, 41);
+            Point A = new Point(0.6, 41);
             Point B = new Point(1, 1);
             Point C = new Point(5.6, -8);
             Point D = new Point(3, 6);
             Triangle T1 = new Triangle("T1", A, B, C);
             Triangle T2 = new Triangle("T2", B, A, C);
-            Rectangle R1 = new Rectangle("R1", A, B, C, D);
+            Rectangle R1 = new Rectangle("R1", A, D);
             Polygon P1 = new Polygon("P1");
             P1.AddPoint(A);
             P1.AddPoint(B);
             P1.AddPoint(C);
             P1.AddPoint(D);
             P1.AddPoint(new Point(45, 21));
-            string jSon = "{" + C1.ToJson() + "}";
-            //DAOFormMySQL.Instance.Save(T1);
-            
-            */
+            string jSon = "{" + R1.ToJson() + "}";
+            DAOFormMySQL.Instance.Save(R1);
+            Shape s = (DAOFormMySQL.Instance.Load(2));
+
+
 
 
 

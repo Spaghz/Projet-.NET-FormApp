@@ -16,7 +16,7 @@ namespace FormApp.Core.Shapes
         private Point   _center;
         private Point   _distantEdgePoint;
         private double  _radius;
-        private static readonly int _type = 6;
+        public static readonly int _type = 6;
 
         /***********************************
          *  Constructor(s)
@@ -77,7 +77,14 @@ namespace FormApp.Core.Shapes
             _radius = radius;
 
         }
+        public Circle(string nom, Color backgroundColor, Color edgeColor, Point center, Point distantEdgePoint)
+            : base(nom, backgroundColor, edgeColor)
+        {
+            _center = center;
+            _distantEdgePoint = distantEdgePoint;
+            _radius = new Vector(center, distantEdgePoint).Length;
 
+        }
         public Circle(Circle c)
             : base(c.Name)
         {

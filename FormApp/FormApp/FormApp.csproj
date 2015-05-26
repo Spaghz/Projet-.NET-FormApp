@@ -48,6 +48,15 @@
     <Compile Include="Core\DAO\IDAOForm.cs" />
     <Compile Include="Core\DAO\DAOFormMySQL.cs" />
     <Compile Include="Core\Shapes\Circle.cs" />
+    <Compile Include="Core\Shapes\COR\COR.cs" />
+    <Compile Include="Core\Shapes\COR\CORShape.cs" />
+    <Compile Include="Core\Shapes\COR\CORShapeLink.cs" />
+    <Compile Include="Core\Shapes\COR\LinkCircle.cs" />
+    <Compile Include="Core\Shapes\COR\LinkGroup.cs" />
+    <Compile Include="Core\Shapes\COR\LinkPolygon.cs" />
+    <Compile Include="Core\Shapes\COR\LinkRectangle.cs" />
+    <Compile Include="Core\Shapes\COR\LinkSegment.cs" />
+    <Compile Include="Core\Shapes\COR\LinkTriangle.cs" />
     <Compile Include="Core\Shapes\Shape.cs" />
     <Compile Include="Core\Shapes\ShapeSimple.cs" />
     <Compile Include="Core\Shapes\Group.cs" />
@@ -157,7 +166,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\SQL\" />
-    <Folder Include="Core\Shapes\COR\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
