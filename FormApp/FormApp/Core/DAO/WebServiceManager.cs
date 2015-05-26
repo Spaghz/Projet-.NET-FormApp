@@ -39,6 +39,9 @@ namespace FormApp.Core.DAO
         {
             WebClient client = new WebClient();
 
+            if (f.Type == Polygon._type)
+                ((Polygon)f).ClearDoublons();
+
             string webServiceResponse = client.UploadString(_WEBSERVICE_Address+"?module=push", "POST", "{"+f.ToJson()+"}");
 
             f.Id = Int32.Parse(webServiceResponse);

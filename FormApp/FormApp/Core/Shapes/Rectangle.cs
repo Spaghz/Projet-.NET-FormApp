@@ -54,6 +54,16 @@ namespace FormApp.Core.Shapes
                 this.AddPoint(new Point(p1.X, p2.Y));
             }
         }
+
+        public Rectangle(string name, Color backgroundColor, Color edgeColor, Point p1, Point p2,Point p3,Point p4)
+            : base(name, backgroundColor, edgeColor)
+        {
+            this.AddPoint(p1);
+            this.AddPoint(p2);
+            this.AddPoint(p3);
+            this.AddPoint(p4);
+        }
+
         public Point P1
         {
             get { return this.Points[0]; }

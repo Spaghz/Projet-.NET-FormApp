@@ -32,6 +32,7 @@ namespace FormApp.Core.Shapes.COR
                 }
                 g.AddForm(COR.Instance.CORShape.CreateShape1(currentShape));
                 i += length+2;
+                j = 0;
             }
 
             g.Id = Convert.ToInt32(splittedSerializedShape[1]);

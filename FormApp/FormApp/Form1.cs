@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FormApp.Core.Shapes.COR;
 using FormApp.Core.DAO;
+using FormApp.Core.Utils;
 
 namespace FormApp
 {
@@ -94,6 +95,14 @@ namespace FormApp
                 sIn.Draw(g, pen);
 
             shapeCurrent.Draw(g, pen);
+        }
+        public void drawForm1()
+        {
+            g = pictureBox1.CreateGraphics();
+            g.Clear(System.Drawing.Color.White);
+
+            foreach (Shape sIn in shapes)
+                sIn.Draw(g, pen);
         }
 
          public void addToList()
@@ -218,14 +227,22 @@ namespace FormApp
             this.panel1.Enabled = false;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+
+        private void button2_Click(object sender, EventArgs e)
         {
             try
             {
-                foreach(Shape s in Shapes)
-                {
-                    WebServiceManager.Instance.Save(s);
-                }
+                g = pictureBox1.CreateGraphics();
+                g.Clear(System.Drawing.Color.White);
+
+                if (this.textBox1.Text.Length == 0)
+                    throw new Exception("Please specifiy a number in the textbox next to pull button.");
+                int shapeId = Convert.ToInt32(this.textBox1.Text);
+                pulledShape = WebServiceManager.Instance.Load(shapeId);
+
+                this.Shapes.Add(pulledShape);
+
+                this.drawForm1();
             }
             catch (Exception ex)
             {
@@ -233,22 +250,33 @@ namespace FormApp
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button1_Click_2(object sender, EventArgs e)
         {
+            List<String> ids = new List<string>(Shapes.Count);
             try
             {
-                if (this.textBox1.Text.Length == 0)
-                    throw new Exception("Please specifiy a number in the textbox next to pull button.");
-
-                Convert.ToInt32(this.textBox1.Text);
-
-                int shapeId = Convert.ToInt32(this.textBox1.Text);
-                pulledShape = WebServiceManager.Instance.Load(shapeId);
+                foreach (Shape s in Shapes)
+                {
+                    WebServiceManager.Instance.Save(s);
+                    ids.Add(s.Id.ToString());
+                }
+                this.label1.Text = "Following ids have been added to the database : " + StringUtils.implode(ids, ';');
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (g == null)
+            {
+                g = pictureBox1.CreateGraphics();
+            }
+                g.Clear(System.Drawing.Color.White);
+
+                this.shapes = new List<Shape>();
         }
         
     }

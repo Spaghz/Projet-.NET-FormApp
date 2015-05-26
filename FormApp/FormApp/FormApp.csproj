@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\Forms\Forms.xml" />
+    <Content Include="Config\SQL\formapp.sql" />
     <Content Include="PHP\test.html" />
     <None Include="PHP\auth.php" />
     <None Include="PHP\client.php" />
@@ -164,9 +165,7 @@
     <None Include="PHP\utils\Point.php" />
     <None Include="ToDo\ToDo.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Config\SQL\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

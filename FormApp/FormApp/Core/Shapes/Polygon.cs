@@ -107,6 +107,13 @@ namespace FormApp.Core.Shapes
             return s;
         }
 
+        public void ClearDoublons()
+        {
+            this.Points.Remove(this.Points[0]);
+            int size = this.Points.Count;
+            this.Points.Remove(this.Points[size - 1]);
+        }
+
         /***********************************
          *  Operator overload
          ***********************************/
