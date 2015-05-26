@@ -106,6 +106,7 @@
     <None Include="PHP\client.php" />
     <None Include="PHP\config\.htaccess" />
     <None Include="PHP\config\auth.php" />
+    <None Include="PHP\FormApp.rar" />
     <None Include="PHP\functions.php" />
     <None Include="PHP\lib\changelog" />
     <None Include="PHP\lib\class.nusoap_base.php" />
@@ -163,6 +164,7 @@
     <None Include="PHP\shapes\Triangle.php" />
     <None Include="PHP\test.php" />
     <None Include="PHP\utils\Point.php" />
+    <None Include="PHP\webservice.php" />
     <None Include="ToDo\ToDo.txt" />
   </ItemGroup>
   <ItemGroup />
